@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import React from "react";
+import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 
 export default function Index() {
@@ -20,6 +21,7 @@ export default function Index() {
             <Nav />
             <Cart />
             <Categories />
+            <TopProducts />
 
 
             {/* <h1>Home</h1>
