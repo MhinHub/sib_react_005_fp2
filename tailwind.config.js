@@ -9,7 +9,11 @@ module.exports = {
     fontFamily: {
       sans: ["Space Grotesk", "Raleway", "Montserrat", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      animation: {
+        'marquee': 'marquee-horizontal 15s linear infinite',
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

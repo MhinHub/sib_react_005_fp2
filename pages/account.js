@@ -1,13 +1,12 @@
 import { getSession, signOut, useSession } from 'next-auth/react'
 
 import React from 'react'
-import style from '../styles/Home.module.css'
 
 export default function account() {
     const { data: session, status } = useSession()
 
     return (
-        <main className={style.main}>
+        <main className="">
             {status === "authenticated" && (
                 <>
                     <h2>Welcome back {session.user.name}</h2>
