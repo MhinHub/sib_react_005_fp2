@@ -2,10 +2,10 @@ import { BsCartPlus, BsStar } from "react-icons/bs";
 
 export default function CardItem({ dataProduct }) {
   return (
-    <article className="grid border content-between max-h-fit border-solid border-black ml-[-1px] mb-[-1px] bg-stone-50 px-6 py-4">
+    <article className="grid font-mono border content-between max-h-fit border-solid border-black ml-[-1px] mb-[-1px] bg-stone-50 px-6 py-4">
       <div className="flex justify-between">
         <div className="flex flex-col">
-          <p className="w-auto font-medium pr-8">{dataProduct?.title}</p>
+          <p className="w-auto font-base pr-8">{dataProduct?.title}</p>
           <p className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
             {dataProduct?.category}
           </p>
