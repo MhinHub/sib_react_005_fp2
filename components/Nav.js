@@ -4,7 +4,7 @@ import React from 'react'
 
 function Nav({ account }) {
     return (
-        <nav className="flex sticky border-y border-black justify-between px-8 items-center overflow-hidden">
+        <nav className="flex bg-white sticky border-y border-black justify-between px-8 items-center overflow-hidden top-0">
             <div className="flex items-center">
                 <span className="w-14 font-light text-7xl">#</span>
                 <h1 className="font-medium text-6xl">HARIMART</h1>

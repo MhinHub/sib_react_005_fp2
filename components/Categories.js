@@ -4,7 +4,7 @@ import React from 'react'
 export default function Categories() {
     return (
         <div className="flex flex-col items-center my-14">
-            <h1 className="text-4xl font-medium">Categories</h1>
+            <h1 className="text-4xl font-medium">CATEGORIES</h1>
             <div className="flex flex-wrap justify-center">
                 <div className="flex justify-center items-center">
                     <div className="flex flex-col items-center m-4">

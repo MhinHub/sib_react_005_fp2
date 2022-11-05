@@ -2,6 +2,7 @@ import CardContent from "../components/CardContent";
 import Cart from "../components/Cart"
 import Categories from "../components/Categories"
 import Head from "next/head";
+import HeroProduct from "../components/HeroProduct";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import React from "react";
@@ -22,6 +23,10 @@ export default function Index() {
             <Cart />
             <Categories />
             <TopProducts />
+            <HeroProduct />
+            <HeroProduct />
+            <HeroProduct />
+            <HeroProduct />
 
 
             {/* <h1>Home</h1>
