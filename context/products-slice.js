@@ -70,11 +70,19 @@ export const ProductsSlice = createSlice({
             state.cart = [];
         },
         deleteCart: (state, action) => {
-            state.cart = state.cart.filter((item) => item.id !== action.payload);
+            state.cart.splice(
+              state.cart.findIndex((data) => data.id === action.payload)
+            );
         }
     }
 });
 
-export const { initiateProducts, updateStock, addCart, addCheckout } = ProductsSlice.actions;
+export const {
+  initiateProducts,
+  updateStock,
+  addCart,
+  addCheckout,
+  deleteCart,
+} = ProductsSlice.actions;
 
 export default ProductsSlice.reducer;

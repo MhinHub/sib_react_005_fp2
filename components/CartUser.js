@@ -31,8 +31,8 @@ export default function CartUser() {
     setTotalPrice(total);
   }, [dataCart]);
 
-  function handleDelete() {
-    dispatch(deleteCart(dataCart.id));
+  function handleDelete(data) {
+    dispatch(deleteCart(data));
   }
 
   // function handleQuantity(e) {
@@ -132,7 +132,7 @@ export default function CartUser() {
                       </div>
                     </div>
                     <div className="flex flex-col justify-between items-end ml-4 py-6">
-                      <button onClick={handleDelete}>
+                      <button onClick={() => handleDelete(data)}>
                         <GrTrash size={20} />
                       </button>
                       <p className="font-bold text-xl">${data.price}</p>
