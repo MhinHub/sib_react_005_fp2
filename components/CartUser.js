@@ -9,15 +9,18 @@ import { deleteCart } from "../context/products-slice";
 // import CardItem from "./CardItem";
 
 export default function CartUser() {
-  const { cart } = useSelector((state) => state.products);
-  console.table("cart ", cart, cart.length);
+  // const { cart } = useSelector((state) => state.products);
+  // console.table("cart ", cart, cart.length);
+
+  const dataCart = useSelector((state) => state.products.cart);
 
   const dispatch = useDispatch();
-  const [isOverStock, setIsOverStock] = useState(false);
-  const [setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  let isOverStock = false;
+  let total = 0;
 
   useEffect(() => {
-    let total = 0;
     dataCart.forEach((item) => {
       total += item.price * item.cartQuantity;
       isOverStock = item.isOverStock || isOverStock;
@@ -50,7 +53,59 @@ export default function CartUser() {
             My Cart
           </h1>
           <br />
-          <div className="flex flex-col">{/* Items */}</div>
+          <div className="flex flex-col">
+            {dataCart.length >= 1 ? (
+              <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col justify-center items-center">
+                    {dataCart.map((data) => {
+                      <>
+                        <Image src={data.image} width={200} height={200} />
+                        <div className="flex flex-col justify-center items-center">
+                          <h2 className="text-2xl font-medium">{data.title}</h2>
+                          <h2 className="text-2xl font-medium">
+                            ${data.price}
+                          </h2>
+                          <div className="flex flex-row justify-center items-center">
+                            <button
+                              className="bg-gray-300 rounded-full w-8 h-8 flex justify-center items-center"
+                              onClick={handleMinusCart}
+                            >
+                              -
+                            </button>
+                            <input
+                              className="w-8 h-8 text-center"
+                              type="number"
+                              value={data.cartQuantity}
+                              onChange={handleQuantity}
+                            />
+                            <button
+                              className="bg-gray-300 rounded-full w-8 h-8 flex justify-center items-center"
+                              onClick={handleAddCart}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <button
+                            className="bg-red-500 rounded-full w-8 h-8 flex justify-center items-center"
+                            onClick={handleDelete}
+                          >
+                            <GrTrash />
+                          </button>
+                        </div>
+                      </>;
+                    })}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center">
+                <h1 className="text-2xl text-center font-medium">
+                  Your cart is empty
+                </h1>
+              </div>
+            )}
+          </div>
         </section>
       </label>
     </>
