@@ -36,7 +36,7 @@ export default function Products({ products }) {
     }
   }, [value]);
 
-  // console.log(imageCategory);
+  // console.log("imageCategory", imageCategory);
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function Products({ products }) {
         <Image
           className="mx-auto my-14 w-40"
           src={imageCategory}
-          alt="Category"
+          alt="Category Products"
           width={300}
           height={300}
         />

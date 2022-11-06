@@ -6,6 +6,13 @@ const nextConfig = {
   images: {
     domains: ["fakestoreapi.com"],
   },
+  webpack: (config) => {
+    config.infrastructureLogging = {
+      debug: /webpack\.config\.js/,
+    };
+    return config;
+  },
 };
+
 
 module.exports = nextConfig;

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply w-full h-full;
-  }
+  /* html {
+    @apply w-full;
+  } */
   body {
     @apply box-border overflow-x-hidden bg-stone-50;
   }

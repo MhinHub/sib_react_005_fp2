@@ -8,6 +8,7 @@ import React from "react";
 import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 import Head from "next/head";
+import Layout from "../components/Layout";
 
 export default function Index() {
   return (
