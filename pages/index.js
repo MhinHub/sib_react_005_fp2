@@ -1,14 +1,15 @@
 import CardItem from "../components/CardItem";
-import Cart from "../components/Cart";
+import CartUser from "../components/CartUser";
 import Categories from "../components/Categories";
 import HeroProduct from "../components/HeroProduct";
-import Link from "next/link";
 import Nav from "../components/Nav";
-import React from "react";
 import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
-import Head from "next/head";
 import Layout from "../components/Layout";
+
+import React from "react";
+import Link from "next/link";
+import Head from "next/head";
 
 export default function Index() {
   return (
@@ -18,7 +19,7 @@ export default function Index() {
       </Head>
       <WelcomeSection />
       <Nav />
-      <Cart />
+      <CartUser />
       <Categories />
       <TopProducts />
       <HeroProduct side />

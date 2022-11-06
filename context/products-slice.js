@@ -33,9 +33,11 @@ export const ProductsSlice = createSlice({
 
             if (isProductFound) {
                 if (isCart)
-                    qty ? state.cart[idx].cartQuantity = parseInt(qty) : state.cart[idx].cartQuantity = qty;
+                    qty
+                      ? (state.cart[idx].cartQuantity = parseInt(qty))
+                      : (state.cart[idx].cartQuantity = qty); 
                 else
-                    state.cart[idx].cartQuantity += parseInt(qty);
+                    state.cart[idx].cartQuantity += parseInt(qty); 
                 state.cart[idx].isOverStock = state.cart[idx].quantity < state.cart[idx].cartQuantity;
             } else {
                 state.cart.push({ ...cartData, cartQuantity: qty, isOverStock: cartData.quantity < 1 });
@@ -67,6 +69,9 @@ export const ProductsSlice = createSlice({
 
             state.cart = [];
         },
+        deleteCart: (state, action) => {
+            state.cart = state.cart.filter((item) => item.id !== action.payload);
+        }
     }
 });
 
