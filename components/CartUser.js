@@ -1,10 +1,10 @@
 import { GrTrash } from "react-icons/gr";
 import Image from "next/image";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteCart } from "../context/products-slice";
+import { deleteCart, addCart } from "../context/products-slice";
 
 // import CardItem from "./CardItem";
 
@@ -13,9 +13,9 @@ export default function CartUser() {
   // console.table("cart ", cart, cart.length);
 
   const dataCart = useSelector((state) => state.products.cart);
-  dataCart.map((data) => {
-    console.table(data);
-  });
+  // dataCart.map((data) => {
+  //   console.table(data);
+  // });
 
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -35,17 +35,47 @@ export default function CartUser() {
     dispatch(deleteCart(dataCart.id));
   }
 
-  function handleQuantity(e) {
-    dispatch(updateStock({ idx: dataCart.idx, quantity: e.target.value }));
+  // function handleQuantity(e) {
+  //   dispatch(updateStock({ idx: dataCart.idx, quantity: e.target.value }));
+  // }
+
+  // Get the value of an Input field
+  const [value, setValue] = useState(0);
+
+  function handleChange(data, value) {
+    dispatch(
+      addCart({
+        cartData: data,
+        qty: value,
+        isCart: true,
+      })
+    );
   }
 
-  function handleAddCart() {
-    dispatch(addCart({ cartData: cart, qty: 1, isCart: false }));
-  }
+  const handlePlusCart = (data) => {
+    setValue(value + 1);
+    handleChange(data, value + 1);
+  };
 
-  function handleMinusCart() {
-    dispatch(addCart({ cartData: cart, qty: -1, isCart: false }));
-  }
+  const handleMinusCart = (data) => {
+    if (value > 0) {
+      setValue(value - 1);
+      handleChange(data, value - 1);
+    }
+  };
+
+  const inputRef = useRef(null);
+
+  // function handlePlusCart() {
+  //   inputRef.current.value++;
+  // }
+
+  // function handleMinusCart() {
+  //   if (inputRef.current.value > 1) {
+  //     inputRef.current.value--;
+  //     handleChange(dataCart, inputRef.current.value);
+  //   }
+  // }
 
   return (
     <>
@@ -61,38 +91,47 @@ export default function CartUser() {
               {dataCart.map((data) => {
                 return (
                   <div className="flex font-mono mb-4 pb-4 justify-between border-b border-solid border-black">
-                    <Image
-                      src={data.image}
-                      alt="Cart image"
-                      width={120}
-                      height={160}
-                    />
-                    <div className="flex flex-col justify-between ml-4 py-6">
-                      <div>
-                        <h2 className="font-medium text-lg w-4/5">
-                          {data.title}
-                        </h2>
-                        <p className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
-                          {data.category}
-                        </p>
-                      </div>
-                      <div>
-                        <button
-                          onClick={handleMinusCart}
-                          className="bg-black text-white px-2 w-8 h-8 text-2xl"
-                        >
-                          -
-                        </button>
-                        <span className="px-4">{data.cartQuantity}</span>
-                        <button
-                          onClick={handleAddCart}
-                          className="bg-black text-white px-2 w-8 h-8 text-2xl"
-                        >
-                          +
-                        </button>
+                    <div className="flex px-10">
+                      <Image
+                        src={data.image}
+                        alt="Cart image"
+                        width={120}
+                        height={160}
+                      />
+                      <div className="flex flex-col justify-between ml-4 py-6 pb-4">
+                        <div>
+                          <h2 className="font-medium text-lg w-full">
+                            {data.title}
+                          </h2>
+                          <p className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
+                            {data.category}
+                          </p>
+                        </div>
+                        <div>
+                          <button
+                            onClick={() => handleMinusCart(data)}
+                            className="bg-black text-white px-2 w-8 h-8 text-2xl"
+                          >
+                            -
+                          </button>
+                          <input
+                            ref={inputRef}
+                            type="text"
+                            name="qty"
+                            className="font-medium w-10 overflow-hidden text-center"
+                            value={data.cartQuantity}
+                            onChange={(e) => handleChange(data, e.target.value)}
+                          />
+                          <button
+                            onClick={() => handlePlusCart(data)}
+                            className="bg-black text-white px-2 w-8 h-8 text-2xl"
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-around items-end ml-4 py-6">
+                    <div className="flex flex-col justify-between items-end ml-4 py-6">
                       <button onClick={handleDelete}>
                         <GrTrash size={20} />
                       </button>
