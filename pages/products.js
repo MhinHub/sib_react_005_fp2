@@ -2,10 +2,11 @@ import { getProducts } from "./api/index";
 import { useSelector, useDispatch } from "react-redux";
 import { initiateProducts } from "../context/products-slice";
 import CardItem from "../components/CardItem";
-import Layout from "./layout";
 import { categories } from "../components/Categories";
 import { useState, useEffect } from "react";
 import Navbar from "../components/Nav";
+import Head from "next/head";
+import Image from "next/image";
 
 export async function getStaticProps() {
   const { data } = await getProducts();
@@ -19,6 +20,8 @@ export async function getStaticProps() {
 export default function Products({ products }) {
   const dispatch = useDispatch();
   const { firstRender } = useSelector((state) => state.products);
+  if (firstRender) dispatch(initiateProducts(products));
+
   const [value, setvalue] = useState("all");
 
   const [imageCategory, setImageCategory] = useState("");
@@ -33,17 +36,24 @@ export default function Products({ products }) {
     }
   }, [value]);
 
-  console.log(imageCategory);
-
-  if (firstRender) dispatch(initiateProducts(products));
+  // console.log(imageCategory);
 
   return (
-    <Layout title={"Products"}>
+    <>
+      <Head>
+        <title>Products | Harimart</title>
+      </Head>
       <Navbar />
       {imageCategory === "all" ? (
         <p className="mx-auto my-14 w-40 h-40 text-7xl text-center">All</p>
       ) : (
-        <img className="mx-auto my-14 w-40" src={imageCategory} />
+        <Image
+          className="mx-auto my-14 w-40"
+          src={imageCategory}
+          alt="Category"
+          width={300}
+          height={300}
+        />
       )}
       <div className="flex justify-between my-5 mx-4 p-4 border-t border-solid border-black">
         <div className="flex-row flex-wrap justify-center">
@@ -66,7 +76,7 @@ export default function Products({ products }) {
             <option>Sort by</option>
             <option>Price</option>
             <option>Popularity</option>
-            <optin>Rating</optin>
+            <option>Rating</option>
           </select>
         </div>
       </div>
@@ -76,6 +86,6 @@ export default function Products({ products }) {
           <CardItem key={id} dataProduct={product} />
         ))}
       </div>
-    </Layout>
+    </>
   );
 }

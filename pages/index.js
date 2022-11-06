@@ -7,19 +7,22 @@ import Nav from "../components/Nav";
 import React from "react";
 import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
-import Layout from "./layout";
+import Head from "next/head";
 
 export default function Index() {
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>Home | Harimart</title>
+      </Head>
       <WelcomeSection />
       <Nav />
       <Cart />
       <Categories />
       <TopProducts />
+      <HeroProduct side />
       <HeroProduct />
-      <HeroProduct />
-      <HeroProduct />
+      <HeroProduct side />
       <HeroProduct />
 
       {/* <h1>Home</h1>
@@ -38,6 +41,6 @@ export default function Index() {
                     <CardItem />
                 </div> */}
       {/* <Cart /> */}
-    </Layout>
+    </>
   );
 }

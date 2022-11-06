@@ -31,10 +31,11 @@ export default function Categories() {
       <div className="flex flex-wrap justify-center">
         <div className="flex justify-center items-center gap-x-10">
           {categories.map((category) => (
-            <div className="flex flex-col items-center m-4">
+            <div key={category.id} className="flex flex-col items-center m-4">
               <h2 className="text-xl font-medium">{category.name}</h2>
               <Image
                 className="w-20"
+                alt="category"
                 src={category.image}
                 width={80}
                 height={80}
