@@ -1,7 +1,19 @@
-import { BsCartPlus, BsStar } from "react-icons/bs";
+import { BsCartPlus, BsStar, BsCartCheckFill } from "react-icons/bs";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addCart } from "../context/products-slice";
 
 export default function CardItem({ dataProduct }) {
+  const dispatch = useDispatch();
+
+  const [isAddCart, setIsAddCart] = useState(false);
+
+  function handleAddCart(dataProduct) {
+    dispatch(addCart({ cartData: dataProduct, qty: 1, isCart: false }));
+    setIsAddCart(!isAddCart);
+  }
+
   return (
     <article className="grid font-mono box-border border content-between max-h-fit border-solid border-black ml-[-1px] mb-[-1px] bg-stone-50 px-6 py-4">
       <div className="flex justify-between">
@@ -30,7 +42,13 @@ export default function CardItem({ dataProduct }) {
           </span>
           <BsStar size={30} />
         </div>
-        <BsCartPlus className="self-center" size={30} />
+        <button onClick={() => handleAddCart(dataProduct)}>
+          {isAddCart ? (
+            <BsCartCheckFill className="self-center" size={30} />
+          ) : (
+            <BsCartPlus className="self-center" size={30} />
+          )}
+        </button>
       </div>
     </article>
   );

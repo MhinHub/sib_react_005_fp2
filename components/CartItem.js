@@ -12,6 +12,10 @@ export default function CartItem() {
 
   console.log("dataCart ", dataCart, dataCart.length);
 
+  dataCart.map((data) => {
+    console.log(data);
+  });
+
   const dispatch = useDispatch();
   let isOverStock = false;
   const [setTotalPrice] = useState(0);
