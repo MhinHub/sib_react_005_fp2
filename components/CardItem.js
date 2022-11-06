@@ -1,17 +1,29 @@
 import { BsCartPlus, BsStar, BsCartCheckFill } from "react-icons/bs";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addCart } from "../context/products-slice";
 
 export default function CardItem({ dataProduct }) {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.products);
 
   const [isAddCart, setIsAddCart] = useState(false);
 
+  function isAddedCart(data) {
+    const isProductFound = cart.some((item) => {
+      if (item.id === data.id) {
+        return true;
+      }
+      return false;
+    });
+
+    return isProductFound;
+  }
+
   function handleAddCart(dataProduct) {
-    dispatch(addCart({ cartData: dataProduct, qty: 1, isCart: false }));
     setIsAddCart(!isAddCart);
+    dispatch(addCart({ cartData: dataProduct, qty: 1, isCart: false }));
   }
 
   return (
@@ -43,7 +55,7 @@ export default function CardItem({ dataProduct }) {
           <BsStar size={30} />
         </div>
         <button onClick={() => handleAddCart(dataProduct)}>
-          {isAddCart ? (
+          {isAddedCart(dataProduct) ? (
             <BsCartCheckFill className="self-center" size={30} />
           ) : (
             <BsCartPlus className="self-center" size={30} />
