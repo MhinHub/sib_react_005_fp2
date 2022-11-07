@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    products: [],
-    cart: [],
-    checkout: [],
-    firstRender: true
+  products: [],
+  cart: [],
+  checkout: [],
+  firstRender: true,
+  stock: [10],
 };
 
 export const ProductsSlice = createSlice({
@@ -16,7 +17,7 @@ export const ProductsSlice = createSlice({
             state.products = action.payload;
         },
         updateStock: (state, action) => {
-            state.products[action.payload.idx].quantity = action.payload.quantity;
+            state.products[action.payload.idx].stock = action.payload.stock;
         },
         addCart: (state, action) => {
             let idx = -1;
@@ -38,9 +39,14 @@ export const ProductsSlice = createSlice({
                       : (state.cart[idx].cartQuantity = qty); 
                 else
                     state.cart[idx].cartQuantity += parseInt(qty); 
-                state.cart[idx].isOverStock = state.cart[idx].quantity < state.cart[idx].cartQuantity;
+                state.cart[idx].isOverStock =
+                  state.cart[idx].stock < state.cart[idx].cartQuantity;
             } else {
-                state.cart.push({ ...cartData, cartQuantity: qty, isOverStock: cartData.quantity < 1 });
+                state.cart.push({
+                  ...cartData,
+                  cartQuantity: qty,
+                  isOverStock: cartData.stock < 1,
+                });
             }
         },
         addCheckout: (state) => {
@@ -62,7 +68,8 @@ export const ProductsSlice = createSlice({
 
                     state.products.forEach((product, productIdx) => {
                         if (product.id === item.id)
-                            state.products[productIdx].quantity -= item.cartQuantity;
+                            state.products[productIdx].stock -=
+                              item.cartQuantity;
                     })
                 }
             })

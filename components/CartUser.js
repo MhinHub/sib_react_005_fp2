@@ -18,17 +18,13 @@ export default function CartUser() {
   // });
 
   const dispatch = useDispatch();
-  const [totalPrice, setTotalPrice] = useState(0);
 
   let isOverStock = false;
-  let total = 0;
 
   useEffect(() => {
     dataCart.forEach((item) => {
-      total += item.price * item.cartQuantity;
       isOverStock = item.isOverStock || isOverStock;
     });
-    setTotalPrice(total);
   }, [dataCart]);
 
   function handleDelete(data) {
@@ -82,15 +78,18 @@ export default function CartUser() {
       <input type="checkbox" id="cart-modal" className="modal-toggle" />
       <label className="modal" htmlFor="cart-modal">
         <section className="modal-box font-mono m-12 overflow-x-hidden w-11/12 max-w-5xl flex flex-col">
-          <h1 className="text-5xl font-bold justify-self-start mb-5">
+          <h1 className="text-5xl text-center font-bold justify-self-start mb-5">
             My Cart
           </h1>
           <br />
           {dataCart.length >= 1 ? (
             <div className="flex flex-col">
-              {dataCart.map((data) => {
+              {dataCart.map((data, id) => {
                 return (
-                  <div className="flex font-mono mb-4 pb-4 justify-between border-b border-solid border-black">
+                  <div
+                    key={id}
+                    className="flex font-mono my-4 pb-4 justify-between border-b border-solid border-black"
+                  >
                     <div className="flex px-10">
                       <Image
                         src={data.image}
@@ -122,6 +121,12 @@ export default function CartUser() {
                             value={data.cartQuantity}
                             onChange={(e) => handleChange(data, e.target.value)}
                           />
+                          {data.isOverStock ? (
+                            <p className="text-red-500 text-sm">
+                              Max {data?.stock} items, please reduce the order
+                              quantity
+                            </p>
+                          ) : null}
                           <button
                             onClick={() => handlePlusCart(data)}
                             className="bg-black text-white px-2 w-8 h-8 text-2xl"
@@ -135,7 +140,12 @@ export default function CartUser() {
                       <button onClick={() => handleDelete(data)}>
                         <GrTrash size={20} />
                       </button>
-                      <p className="font-bold text-xl">${data.price}</p>
+                      <p className="font-medium text-gray-700 text-base">
+                        ${data.price.toFixed(2)}/pcs
+                      </p>
+                      <p className="font-bold text-2xl">
+                        ${(data.price * data.cartQuantity).toFixed(2)}
+                      </p>
                     </div>
                   </div>
                 );

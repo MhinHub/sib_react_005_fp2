@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Nav";
 import Head from "next/head";
 import Image from "next/image";
+import { SiHashnode } from "react-icons/si";
 
 export async function getStaticProps() {
   const { data } = await getProducts();
@@ -45,7 +46,9 @@ export default function Products({ products }) {
       </Head>
       <Navbar />
       {imageCategory === "all" ? (
-        <p className="mx-auto my-14 w-40 h-40 text-7xl text-center">All</p>
+        <p className="mx-auto my-14 w-40 h-40 ">
+          <SiHashnode size={160} />
+        </p>
       ) : (
         <Image
           className="mx-auto my-14 w-40"
