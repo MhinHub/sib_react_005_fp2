@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCart } from "../context/products-slice";
 
 export default function CartItem() {
-  const dataCart = useSelector((state) => state.products.cart);
+  const dataCart = useSelector((state) => state.data.cart);
   console.log("tesssssss card item");
 
   console.log("dataCart ", dataCart, dataCart.length);

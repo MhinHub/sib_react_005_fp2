@@ -17,7 +17,7 @@ import { getProducts } from "../pages/api/index";
 
 export default function TopProducts() {
   const dispatch = useDispatch();
-  const { firstRender, products } = useSelector((state) => state.products);
+  const { firstRender, products } = useSelector((state) => state.data);
   if (firstRender) dispatch(initiateProducts(products));
 
   return (

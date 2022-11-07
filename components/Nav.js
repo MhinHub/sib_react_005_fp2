@@ -4,7 +4,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Nav({ account }) {
-  const { cart } = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.data);
   return (
     <nav
       id="home"
@@ -16,7 +16,7 @@ function Nav({ account }) {
       </Link>
       <div className="flex items-center">
         <label className="flex justify-end mx-4" htmlFor={`cart-modal`}>
-          <span className="absolute text-white p-px w-fit justify-items-center items-center bg-red-700 rounded-full text-xs font-semibold">
+          <span className="absolute text-white p-px px-1 h-fit w-fit justify-items-center items-center bg-red-700 rounded-full text-xs font-bold">
             {cart.length}
           </span>
           <BsFillCartFill size={30} />

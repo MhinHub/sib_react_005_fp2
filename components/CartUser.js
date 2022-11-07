@@ -9,10 +9,10 @@ import { deleteCart, addCart } from "../context/products-slice";
 // import CardItem from "./CardItem";
 
 export default function CartUser() {
-  // const { cart } = useSelector((state) => state.products);
+  // const { cart } = useSelector((state) => state.data);
   // console.table("cart ", cart, cart.length);
 
-  const dataCart = useSelector((state) => state.products.cart);
+  const dataCart = useSelector((state) => state.data.cart);
   // dataCart.map((data) => {
   //   console.table(data);
   // });
@@ -96,6 +96,7 @@ export default function CartUser() {
                         alt="Cart image"
                         width={120}
                         height={160}
+                        loading="lazy"
                       />
                       <div className="flex flex-col justify-between ml-4 py-6 pb-4">
                         <div>

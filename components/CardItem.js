@@ -6,7 +6,7 @@ import { addCart } from "../context/products-slice";
 
 export default function CardItem({ dataProduct }) {
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.data);
 
   const [isAddCart, setIsAddCart] = useState(false);
 

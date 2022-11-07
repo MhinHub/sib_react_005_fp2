@@ -20,7 +20,7 @@ export async function getStaticProps() {
 
 export default function Products({ products }) {
   const dispatch = useDispatch();
-  const { firstRender } = useSelector((state) => state.products);
+  const { firstRender } = useSelector((state) => state.data);
   if (firstRender) dispatch(initiateProducts(products));
 
   const [value, setvalue] = useState("all");
