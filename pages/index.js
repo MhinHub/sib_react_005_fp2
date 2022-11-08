@@ -1,4 +1,3 @@
-import CardItem from "../components/CardItem";
 import CartUser from "../components/CartUser";
 import Categories from "../components/Categories";
 import HeroProduct from "../components/HeroProduct";

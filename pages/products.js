@@ -5,7 +5,6 @@ import CardItem from "../components/CardItem";
 import { categories } from "../components/Categories";
 import { useState, useEffect } from "react";
 import Navbar from "../components/Nav";
-import Head from "next/head";
 import Image from "next/image";
 import { SiHashnode } from "react-icons/si";
 import Layout from "../components/Layout";

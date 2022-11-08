@@ -13,8 +13,8 @@ export default function StockAdmin({ stock, setStock }) {
     const dataFilter = data.filter((item) => item.id !== id);
 
     quantity
-      ? (product.quantity = parseInt(quantity))
-      : (product.quantity = quantity);
+      ? (product.stock = parseInt(quantity))
+      : (product.stock = quantity);
 
     dataFilter.push(product);
 
@@ -24,7 +24,7 @@ export default function StockAdmin({ stock, setStock }) {
   };
 
   const handleUpdateStock = (stock, idx) => {
-    dispatch(updateStock({ quantity: stock[idx].stock, id: stock[idx].id }));
+    dispatch(updateStock(stock[idx]));
   };
 
   // return data in table
@@ -34,6 +34,7 @@ export default function StockAdmin({ stock, setStock }) {
       <table className="table-zebra w-11/12 mx-12 my-20">
         <thead className="border border-solid border-black">
           <tr>
+            <th className="px-4 py-2 text-lg"></th>
             <th className="px-4 py-2 text-lg">Products</th>
             <th className="px-4 py-2 text-lg">Stock</th>
             <th className="px-4 py-2 text-lg">Update</th>
@@ -42,14 +43,16 @@ export default function StockAdmin({ stock, setStock }) {
         <tbody>
           {stock.map((item, idx) => (
             <tr key={idx}>
-              <td className="flex border-b border-black">
+              <td className="border-b border-black">
                 <Image
-                  className="w-28 h-28 object-cover self-center"
+                  className="object-cover self-center"
                   src={item.image}
                   alt={item.title}
-                  width={100}
-                  height={100}
+                  width={500}
+                  height={500}
                 />
+              </td>
+              <td className="border-b border-black">
                 <div className="flex-col content-between items-center justify-between p-10">
                   <h2 className="font-medium text-lg w-full">{item.title}</h2>
                   <span className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
@@ -62,9 +65,11 @@ export default function StockAdmin({ stock, setStock }) {
               </td>
               <td className="border-b border-black">
                 <input
+                  id={item.id}
                   type="number"
                   className="text-center font-bold active:outline h-10 text-2xl w-32 mx-10"
                   value={item.stock}
+                  min={0}
                   onChange={(e) =>
                     handleChange(e.target.value, stock, item.id, idx)
                   }
