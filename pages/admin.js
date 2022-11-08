@@ -3,21 +3,10 @@ import StockAdmin from "../components/StockAdmin";
 import { useState } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
-import { getProducts } from "./api";
+import { useSelector } from "react-redux";
 
-export async function getStaticProps() {
-  const { data } = await getProducts();
-  return {
-    props: {
-      products: data?.map((product) => ({
-        ...product,
-        stock: 10,
-      })),
-    },
-  };
-}
-
-export default function admin({ products }) {
+export default function admin() {
+  const { products } = useSelector((state) => state.data);
   const [stockItem, setStockItem] = useState([...products]);
 
   return (

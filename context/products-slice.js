@@ -16,9 +16,11 @@ export const ProductsSlice = createSlice({
       state.products = action.payload;
     },
     updateStock: (state, action) => {
-      const { id, stock } = action.payload;
-      const product = state.products.find((item) => item.id === id);
-      if (product) product.stock = stock;
+      // const { id, stock } = action.payload;
+      // const product = state.products.find((item) => item.id === id);
+      // if (product) product.stock = stock;
+
+      state.products[action.payload.idx].stock = action.payload.stock;
     },
     addCart: (state, action) => {
       let idx = -1;

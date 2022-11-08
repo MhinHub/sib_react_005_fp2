@@ -6,10 +6,12 @@ export default function StockAdmin({ stock, setStock }) {
   const dispatch = useDispatch();
 
   const handleChange = (quantity, stock, id, idx) => {
+    // const newStock = [...stock];
+    // newStock[idx].stock = quantity;
+    // setStock(newStock);
+
     const data = [...stock];
-
     const product = { ...stock[idx] };
-
     const dataFilter = data.filter((item) => item.id !== id);
 
     quantity
@@ -17,17 +19,14 @@ export default function StockAdmin({ stock, setStock }) {
       : (product.stock = quantity);
 
     dataFilter.push(product);
-
     dataFilter.sort((a, b) => a.id - b.id || a.name.localeCompare(b.name));
-
     setStock(dataFilter);
   };
 
   const handleUpdateStock = (stock, idx) => {
-    dispatch(updateStock(stock[idx]));
+    dispatch(updateStock({ stock: stock[idx].stock, idx }));
+    alert("Stock has been updated");
   };
-
-  // return data in table
 
   return (
     <div className="flex justify-center">
@@ -65,7 +64,7 @@ export default function StockAdmin({ stock, setStock }) {
               </td>
               <td className="border-b border-black">
                 <input
-                  id={item.id}
+                  // id={item.id}
                   type="number"
                   className="text-center font-bold active:outline h-10 text-2xl w-32 mx-10"
                   value={item.stock}

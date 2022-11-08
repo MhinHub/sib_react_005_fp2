@@ -27,6 +27,7 @@ export default function Index({ products }) {
   return (
     <Layout title="Home">
       <WelcomeSection />
+      <Link href="/admin">Admin</Link>
       <Nav />
       <Categories />
       <TopProducts products={products} />
