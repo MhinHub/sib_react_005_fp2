@@ -6,22 +6,31 @@ import Nav from "../components/Nav";
 import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 import Layout from "../components/Layout";
+import { getProducts } from "./api";
 
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-export default function Index() {
+export async function getStaticProps() {
+  const { data } = await getProducts();
+  return {
+    props: {
+      products: data?.map((product) => ({
+        ...product,
+        stock: 10,
+      })),
+    },
+  };
+}
+
+export default function Index({ products }) {
   return (
-    <>
-      <Head>
-        <title>Home | Harimart</title>
-      </Head>
+    <Layout title="Home">
       <WelcomeSection />
       <Nav />
-      <CartUser />
       <Categories />
-      <TopProducts />
+      <TopProducts products={products} />
       <HeroProduct side />
       <HeroProduct />
       <HeroProduct side />
@@ -43,6 +52,6 @@ export default function Index() {
                     <CardItem />
                 </div> */}
       {/* <Cart /> */}
-    </>
+    </Layout>
   );
 }

@@ -6,19 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { initiateProducts } from "../context/products-slice";
 import { getProducts } from "../pages/api/index";
 
-// export async function getStaticProps() {
-//   const { data } = await getProducts();
-//   return {
-//     props: {
-//       products: data,
-//     },
-//   };
-// }
+// metode fetching data getStaticProps() hanya bisa dilakukan di pages, tidak secara langsung di components
 
-export default function TopProducts() {
+export default function TopProducts({ products }) {
   const dispatch = useDispatch();
-  const { firstRender, products } = useSelector((state) => state.data);
+  const { firstRender } = useSelector((state) => state.data);
   if (firstRender) dispatch(initiateProducts(products));
+
+  console.log("products", products);
 
   return (
     <div className="my-8">

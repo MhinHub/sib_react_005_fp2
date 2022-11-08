@@ -8,12 +8,16 @@ import Navbar from "../components/Nav";
 import Head from "next/head";
 import Image from "next/image";
 import { SiHashnode } from "react-icons/si";
+import Layout from "../components/Layout";
 
 export async function getStaticProps() {
   const { data } = await getProducts();
   return {
     props: {
-      products: data,
+      products: data?.map((product) => ({
+        ...product,
+        stock: 10,
+      })),
     },
   };
 }
@@ -40,10 +44,7 @@ export default function Products({ products }) {
   // console.log("imageCategory", imageCategory);
 
   return (
-    <>
-      <Head>
-        <title>Products | Harimart</title>
-      </Head>
+    <Layout title="Products">
       <Navbar />
       {imageCategory === "all" ? (
         <p className="mx-auto my-14 w-40 h-40 ">
@@ -89,6 +90,6 @@ export default function Products({ products }) {
           <CardItem key={id} dataProduct={product} />
         ))}
       </div>
-    </>
+    </Layout>
   );
 }

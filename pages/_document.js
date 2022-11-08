@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
   // }
   render() {
     return (
-      <Html lang="en" className="scroll-smooth">
+      <Html lang="en" className="scroll-smooth" data-theme="wireframe">
         <Head>
           <meta charSet="UTF-8" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />

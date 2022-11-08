@@ -35,7 +35,9 @@ export default function CardItem({ dataProduct }) {
             {dataProduct?.category}
           </p>
         </div>
-        <p className="flex bg-slate-300 px-2 py-0 h-fit w-fit">{`$${dataProduct?.price}`}</p>
+        <p className="flex bg-slate-300 px-2 py-0 h-fit w-fit">
+          ${`${dataProduct?.price.toFixed(2)}`}
+        </p>
       </div>
       <Image
         className="justify-self-center px-10 w-4/5 my-4"
