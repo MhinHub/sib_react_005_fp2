@@ -25,7 +25,7 @@ export default function StockAdmin({ stock, setStock }) {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center font-mono">
       <table className="table-zebra w-11/12 mx-12 my-20">
         <thead className="border border-solid border-black">
           <tr>
@@ -53,7 +53,7 @@ export default function StockAdmin({ stock, setStock }) {
                   <span className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
                     {item.category}
                   </span>
-                  <p className="font-normal text-sm w-full">
+                  <p className="font-normal leading-5 text-sm w-full">
                     {item.description}
                   </p>
                 </div>

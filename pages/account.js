@@ -1,4 +1,5 @@
 import { getSession, signOut, useSession } from 'next-auth/react'
+import Navbar from '../components/Nav'
 
 import React from 'react'
 
@@ -6,6 +7,8 @@ export default function account() {
     const { data: session, status } = useSession()
 
     return (
+        <>
+            <Navbar />
         <main className="">
             {status === "authenticated" && (
                 <>
@@ -14,6 +17,7 @@ export default function account() {
                 </>
             )}
         </main>
+        </>
     )
 }
 

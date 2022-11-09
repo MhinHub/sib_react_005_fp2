@@ -27,6 +27,7 @@ export default function CartUser() {
     });
   }, [dataCart]);
 
+  // handle delete based on id
   function handleDelete(data) {
     dispatch(deleteCart(data));
   }
@@ -87,10 +88,10 @@ export default function CartUser() {
           <br />
           {dataCart.length >= 1 ? (
             <div className="flex flex-col">
-              {dataCart.map((data, id) => {
+              {dataCart.map((data) => {
                 return (
                   <div
-                    key={id}
+                    key={data.id}
                     className="flex font-mono my-4 pb-4 justify-between border-b border-solid border-black"
                   >
                     <div className="flex px-10">

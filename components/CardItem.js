@@ -1,4 +1,4 @@
-import { BsCartPlus, BsStar, BsCartCheckFill } from "react-icons/bs";
+import { BsCartPlus, BsStar, BsCartCheckFill, BsStarFill } from "react-icons/bs";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useContext, createContext } from "react";
@@ -62,10 +62,10 @@ export default function CardItem({ dataProduct }) {
       </label>
       <div className="flex bottom-0 justify-between px-2">
         <div className="grid place-items-center">
-          <span className="absolute pt-1 text-sm font-medium">
+          <span className="absolute pt-1 text-sm font-semibold">
             {dataProduct?.rating.rate.toFixed()}
           </span>
-          <BsStar size={30} />
+          <BsStarFill className="text-slate-300" size={30} />
         </div>
         <button onClick={() => handleAddCart(dataProduct)}>
           {isAddedCart(dataProduct) ? (
