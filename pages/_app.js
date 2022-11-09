@@ -15,7 +15,7 @@ export default function MyApp({
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <NextNprogress
-                        color="#323232"
+                        color="#bca6ff"
                         options={{ showSpinner: false }}
                         delay={100}
                         showOnShallow={true}

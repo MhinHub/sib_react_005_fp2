@@ -53,7 +53,7 @@ export default function Products() {
           <select
             value={value}
             onChange={(e) => setvalue(e.target.value)}
-            className="select select-ghost w-fit max-w-xs underline underline-offset-4 text-base decoration-solid"
+              className="select select-ghost w-fit max-w-xs underline underline-offset-2 text-base decoration-solid"
           >
             <option value="all">All</option>
             {categories.map((category) => (
@@ -64,7 +64,7 @@ export default function Products() {
 
         <div className="flex-row flex-wrap justify-center">
           <span>Sort By:</span>
-          <select className="select select-ghost w-32 max-w-xs underline underline-offset-4 text-base decoration-solid">
+            <select className="select select-ghost w-fit max-w-xs underline underline-offset-2 text-base decoration-solid">
             <option>Sort by</option>
             <option>Price</option>
             <option>Popularity</option>
