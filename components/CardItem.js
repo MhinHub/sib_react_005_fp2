@@ -1,14 +1,19 @@
 import { BsCartPlus, BsStar, BsCartCheckFill } from "react-icons/bs";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useContext, createContext } from "react";
 import { addCart } from "../context/products-slice";
+import Link from "next/link";
 
 export default function CardItem({ dataProduct }) {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.data);
 
   const [isAddCart, setIsAddCart] = useState(false);
+
+  // const idData = createContext(dataProduct.id);
+  // const idDataCart = useContext(idData);
+  // console.log('tesss', idDataCart);
 
   function isAddedCart(data) {
     const isProductFound = cart.some((item) => {
@@ -39,16 +44,22 @@ export default function CardItem({ dataProduct }) {
           ${`${dataProduct?.price.toFixed(2)}`}
         </p>
       </div>
-      <Image
-        className="justify-self-center px-10 w-4/5 my-4"
-        src={dataProduct?.image}
-        alt="random image"
-        // placeholder="blur"
-        // blurDataURL={dataProduct?.image}
-        loading="lazy"
-        width={300}
-        height={300}
-      />
+      {/* <Link href={{pathname: "/detail/[slug]", query: {id: dataProduct?.id}}}> */}
+      {/* Link to : detail/product?id=1 */}
+      <label htmlFor="modal-product">
+        <Link href={`/detail?product=${dataProduct?.id}`}>
+          <Image
+            className="justify-self-center px-10 w-4/5 my-4"
+            src={dataProduct?.image}
+            alt="random image"
+            // placeholder="blur"
+            // blurDataURL={dataProduct?.image}
+            loading="lazy"
+            width={300}
+            height={300}
+          />
+        </Link>
+      </label>
       <div className="flex bottom-0 justify-between px-2">
         <div className="grid place-items-center">
           <span className="absolute pt-1 text-sm font-medium">

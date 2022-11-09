@@ -8,13 +8,10 @@ import { deleteCart } from "../context/products-slice";
 
 export default function CartItem() {
   const dataCart = useSelector((state) => state.data.cart);
-  console.log("tesssssss card item");
 
-  console.log("dataCart ", dataCart, dataCart.length);
-
-  dataCart.map((data) => {
-    console.log(data);
-  });
+  // dataCart.map((data) => {
+  //   console.log(data);
+  // });
 
   const dispatch = useDispatch();
   let isOverStock = false;

@@ -5,7 +5,7 @@ import ProductsSlice from "./products-slice";
 import storage from "redux-persist/lib/storage";
 
 const reducers = combineReducers({
-  data: ProductsSlice,
+    data: ProductsSlice,
 });
 
 const persistConfig = {

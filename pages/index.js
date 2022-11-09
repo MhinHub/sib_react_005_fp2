@@ -1,4 +1,4 @@
-import CartUser from "../components/CartUser";
+// import CartUser from "../components/modal/CartUser";
 import Categories from "../components/Categories";
 import HeroProduct from "../components/HeroProduct";
 import Nav from "../components/Nav";
@@ -6,6 +6,7 @@ import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 import Layout from "../components/Layout";
 import { getProducts } from "./api";
+import ProductDetail from "../components/modal/ProductDetail";
 
 import React from "react";
 import Link from "next/link";
@@ -35,6 +36,8 @@ export default function Index({ products }) {
       <HeroProduct />
       <HeroProduct side />
       <HeroProduct />
+
+      {/* <ProductDetail products={products} /> */}
 
       {/* <h1>Home</h1>
                 <Link href="/account">

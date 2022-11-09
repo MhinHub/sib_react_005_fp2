@@ -1,7 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import Nav from "./Nav";
-import CartUser from "./CartUser";
+import CartUser from "./modal/CartUser";
+import ProductDetail from "./modal/ProductDetail";
 
 export default function layout({ title, children }) {
   return (
@@ -18,7 +19,7 @@ export default function layout({ title, children }) {
       <main>
         {children}
         <CartUser />
-        {/* Coba jangka pendek jika semua halaman dimasukkan component ini */}
+        {/* <ProductDetail /> */}
       </main>
     </>
   );

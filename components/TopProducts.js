@@ -13,7 +13,7 @@ export default function TopProducts({ products }) {
   const { firstRender } = useSelector((state) => state.data);
   if (firstRender) dispatch(initiateProducts(products));
 
-  console.log("products", products);
+  // console.log("products", products);
 
   return (
     <div className="my-8">

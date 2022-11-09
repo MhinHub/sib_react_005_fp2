@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deleteCart, addCart } from "../context/products-slice";
+import { deleteCart, addCart } from "../../context/products-slice";
 
 // import CardItem from "./CardItem";
 
@@ -77,7 +77,10 @@ export default function CartUser() {
     <>
       <input type="checkbox" id="cart-modal" className="modal-toggle" />
       <label className="modal" htmlFor="cart-modal">
-        <section className="modal-box font-mono m-12 overflow-x-hidden w-11/12 max-w-5xl flex flex-col">
+        <label
+          htmlFor=""
+          className="modal-box relative font-mono m-12 overflow-x-hidden w-11/12 max-w-5xl flex flex-col"
+        >
           <h1 className="text-5xl text-center font-bold justify-self-start mb-5">
             My Cart
           </h1>
@@ -159,7 +162,7 @@ export default function CartUser() {
               </h1>
             </div>
           )}
-        </section>
+        </label>
       </label>
     </>
   );

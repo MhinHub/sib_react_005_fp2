@@ -6,10 +6,6 @@ export default function StockAdmin({ stock, setStock }) {
   const dispatch = useDispatch();
 
   const handleChange = (quantity, stock, id, idx) => {
-    // const newStock = [...stock];
-    // newStock[idx].stock = quantity;
-    // setStock(newStock);
-
     const data = [...stock];
     const product = { ...stock[idx] };
     const dataFilter = data.filter((item) => item.id !== id);
@@ -19,9 +15,9 @@ export default function StockAdmin({ stock, setStock }) {
       : (product.stock = quantity);
 
     dataFilter.push(product);
-    dataFilter.sort((a, b) => a.id - b.id || a.name.localeCompare(b.name));
+    dataFilter.sort((a, b) => a.id - b.id || a.name.localeCompare(b.name)); // sort by id or name
     setStock(dataFilter);
-  };
+  };;
 
   const handleUpdateStock = (stock, idx) => {
     dispatch(updateStock({ stock: stock[idx].stock, idx }));
