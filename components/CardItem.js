@@ -44,10 +44,10 @@ export default function CardItem({ dataProduct }) {
           ${`${dataProduct?.price.toFixed(2)}`}
         </p>
       </div>
-      {/* <Link href={{pathname: "/detail/[slug]", query: {id: dataProduct?.id}}}> */}
-      {/* Link to : detail/product?id=1 */}
       <label htmlFor="modal-product">
-        <Link href={`/detail?product=${dataProduct?.id}`}>
+        <Link href={{ pathname: "/detail/[slug]", query: { slug: dataProduct?.id } }}>
+      {/* Link to : detail/product?id=1 */}
+          {/* <Link href={`/detail?product=${dataProduct?.id}`}> */}
           <Image
             className="justify-self-center px-10 w-4/5 my-4"
             src={dataProduct?.image}

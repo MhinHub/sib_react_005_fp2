@@ -23,9 +23,9 @@ export default function TopProducts({ products }) {
           <CardItem key={id} dataProduct={product} />
         ))}
       </div>
-      <div className="ml-8 h-12 w-48 bg-black text-white text-center text-lg p-3 items-center font-base rounded-none">
-        <Link href={"/products"}>See More</Link>
-      </div>
+      <Link href={"/products"} className="ml-8 h-12 w-48 bg-black text-white text-center text-lg p-3 px-32 items-center font-base rounded-none">
+        See More
+      </Link>
     </div>
   );
 }

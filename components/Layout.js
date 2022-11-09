@@ -2,7 +2,8 @@ import React from "react";
 import Head from "next/head";
 import Nav from "./Nav";
 import CartUser from "./modal/CartUser";
-import ProductDetail from "./modal/ProductDetail";
+import Footer from "./Footer"
+import ProductDetail from "./modal/ProductDetail_";
 
 export default function layout({ title, children }) {
   return (
@@ -20,6 +21,7 @@ export default function layout({ title, children }) {
         {children}
         <CartUser />
         {/* <ProductDetail /> */}
+        <Footer />
       </main>
     </>
   );

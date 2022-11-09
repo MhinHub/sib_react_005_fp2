@@ -9,21 +9,10 @@ import Image from "next/image";
 import { SiHashnode } from "react-icons/si";
 import Layout from "../components/Layout";
 
-export async function getStaticProps() {
-  const { data } = await getProducts();
-  return {
-    props: {
-      products: data?.map((product) => ({
-        ...product,
-        stock: 10,
-      })),
-    },
-  };
-}
 
-export default function Products({ products }) {
+export default function Products() {
   const dispatch = useDispatch();
-  const { firstRender } = useSelector((state) => state.data);
+  const { firstRender, products } = useSelector((state) => state.data);
   if (firstRender) dispatch(initiateProducts(products));
 
   const [value, setvalue] = useState("all");

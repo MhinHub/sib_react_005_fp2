@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart } from "../context/products-slice";
+import { addCart } from "../../context/products-slice";
 import { useRouter } from "next/router";
-import { getProductDetail } from "./api"
+import { getProductDetail } from "../api"
 import Link from "next/link";
+import Nav from "../../components/Nav";
+import Layout from "../../components/Layout";
 
 export default async function ProductDetail() {
     const dispatch = useDispatch();
@@ -12,14 +14,16 @@ export default async function ProductDetail() {
     // const data = useSelector((state) => state.data.products);
     // const [products, setProducts] = useState([...data]);
 
-    const router = useRouter();
-    const { product } = router.query;
+    const { products } = useSelector((state) => state.data);
 
-    useEffect(() => {
-        getProductDetail(product).then((res) => {
-            setData(res.data);
-        });
-    }, [product]);
+    const router = useRouter();
+    const [slug] = router.query;
+
+    // useEffect(() => {
+    //     getProductDetail(slug).then((res) => {
+    //         setData(res.data);
+    //     });
+    // }, [slug]);
 
     // menampilkan detail produk berdasarkan id pada product
     const [title, setTitle] = useState("");
@@ -28,8 +32,8 @@ export default async function ProductDetail() {
     const [image, setImage] = useState("");
 
     useEffect(() => {
-        data.map((item) => {
-            if (item.id == product) {
+        products.map((item) => {
+            if (item.id == slug) {
                 console.log(item.description);
                 const { title, description, price, image } = item;
                 setTitle(title);
@@ -38,10 +42,10 @@ export default async function ProductDetail() {
                 setImage(image);
             }
         })
-    }, [product]);
+    }, [slug]);
 
 
-    console.log("product ", product);
+    // console.log("product ", product);
     console.log(price);
 
 
@@ -74,8 +78,9 @@ export default async function ProductDetail() {
     // products.map((item) => {
     //   if (item.id == product) {
     return (
-        <>
-            <input type="checkbox" id="modal-product" className="modal-toggle" />
+        <Layout title={"Detail Product"}>
+            <Nav />
+            {/* <input type="checkbox" id="modal-product" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
                     <label
@@ -83,18 +88,18 @@ export default async function ProductDetail() {
                         className="btn btn-sm btn-circle absolute right-2 top-2"
                     >
                         ✕
-                    </label>
-                    <h1>{title}</h1>
+                    </label> */}
+            <h1>{title}</h1>
 
 
-                    {/* {products.map((item) => {
+            {/* {products.map((item) => {
             if (item.id == product) {
               <h1>{item.title}</h1>
             }
           })} */}
 
 
-                    {/* {data ? (
+            {/* {data ? (
             <h1>{data.title}</h1>
           ) : (
             <h1>Product not found</h1>
@@ -102,16 +107,16 @@ export default async function ProductDetail() {
           } */}
 
 
-                    {/* <img src={products.image} alt={products.title} />
+            {/* <img src={products.image} alt={products.title} />
           <p>{products.description}</p>
           <p>Stock: {products.stock}</p>
           <p>Price: {products.price}</p>
           <button onClick={() => handleMinusCart(products)}>-</button>
           <input type="number" value={value} />
           <button onClick={() => handlePlusCart(products)}>+</button> */}
-                </div>
-            </div>
-        </>
+            {/* </div>
+            </div > */}
+        </Layout >
     );
 }
 //   });
