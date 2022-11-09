@@ -10,11 +10,11 @@ export default function layout({ title, children }) {
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <title>{`${title} | Harimart`}</title>
+        <title>{`${title} | Haffmart`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Harimart is best of the best best online shopping website"
+          content="Haffmart is best of the best best online shopping website"
         />
       </Head>
       <main>

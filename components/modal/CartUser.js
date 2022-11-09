@@ -110,10 +110,16 @@ export default function CartUser() {
                             {data.category}
                           </p>
                         </div>
+                        {data.isOverStock ? (
+                          <p className="text-red-500 text-sm">
+                            Max {data?.stock} items, please reduce the order
+                            quantity
+                          </p>
+                        ) : null}
                         <div>
                           <button
                             onClick={() => handleMinusCart(data)}
-                            className="bg-black text-white px-2 w-8 h-8 text-2xl"
+                            className={`bg-black text-white px-2 w-8 h-8 text-2xl`}
                           >
                             -
                           </button>
@@ -125,15 +131,9 @@ export default function CartUser() {
                             value={data.cartQuantity}
                             onChange={(e) => handleChange(data, e.target.value)}
                           />
-                          {data.isOverStock ? (
-                            <p className="text-red-500 text-sm">
-                              Max {data?.stock} items, please reduce the order
-                              quantity
-                            </p>
-                          ) : null}
                           <button
                             onClick={() => handlePlusCart(data)}
-                            className="bg-black text-white px-2 w-8 h-8 text-2xl"
+                            className={`${data.isOverStock ? "bg-gray-300" : "bg-black"} text-white px-2 w-8 h-8 text-2xl`}
                           >
                             +
                           </button>

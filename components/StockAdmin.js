@@ -32,7 +32,7 @@ export default function StockAdmin({ stock, setStock }) {
             <th className="px-4 py-2 text-lg"></th>
             <th className="px-4 py-2 text-lg">Products</th>
             <th className="px-4 py-2 text-lg">Stock</th>
-            <th className="px-4 py-2 text-lg">Update</th>
+            <th className="px-4 py-2 text-lg">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -73,9 +73,9 @@ export default function StockAdmin({ stock, setStock }) {
               <td className="border-b border-black">
                 <button
                   onClick={() => handleUpdateStock(stock, idx)}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                 >
-                  Update
+                  Apply
                 </button>
               </td>
             </tr>

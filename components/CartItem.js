@@ -34,11 +34,13 @@ export default function CartItem() {
     dispatch(updateStock({ idx: dataCart.idx, quantity: e.target.value }));
   }
 
-  function handleAddCart() {
+  function handleAddCart(e) {
+    e.preventDefault();
     dispatch(addCart({ cartData: cart, qty: 1, isCart: false }));
   }
 
-  function handleMinusCart() {
+  function handleMinusCart(e) {
+    e.preventDefault();
     dispatch(addCart({ cartData: cart, qty: -1, isCart: false }));
   }
 
@@ -64,6 +66,7 @@ export default function CartItem() {
                       <input
                         className="w-8 h-8 text-center"
                         type="number"
+                        min="1"
                         value={data.cartQuantity}
                         onChange={handleQuantity}
                       />

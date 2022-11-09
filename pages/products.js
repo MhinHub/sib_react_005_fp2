@@ -1,4 +1,3 @@
-import { getProducts } from "./api/index";
 import { useSelector, useDispatch } from "react-redux";
 import { initiateProducts } from "../context/products-slice";
 import CardItem from "../components/CardItem";
@@ -33,6 +32,7 @@ export default function Products() {
 
   return (
     <Layout title="Products">
+      <div className="bg-image-linear-gradient-v">
       <Navbar />
       {imageCategory === "all" ? (
         <p className="mx-auto my-14 w-40 h-40 ">
@@ -57,7 +57,7 @@ export default function Products() {
           >
             <option value="all">All</option>
             {categories.map((category) => (
-              <option value={category.name}>{category.name}</option>
+              <option key={category.id} value={category.name}>{category.name}</option>
             ))}
           </select>
         </div>
@@ -71,6 +71,8 @@ export default function Products() {
             <option>Rating</option>
           </select>
         </div>
+        </div>
+
       </div>
 
       <div className="grid grid-cols-3 -mr-px mb-8">

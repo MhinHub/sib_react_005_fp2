@@ -30,7 +30,7 @@ function ImgSide({ src }) {
 
 export default function HeroProduct({ side, title, desc, txtBtn, src }) {
   return (
-    <div className="flex justify-around border-t border-solid border-black px-10 py-12 mt-16">
+    <div className="flex justify-around border-t border-solid border-black px-10 py-12 mt-16 bg-white">
       {side === true ? (
         <>
           <TxtSide title={title} desc={desc} txtBtn={txtBtn} />

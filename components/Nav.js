@@ -12,9 +12,10 @@ function Nav({ account }) {
     >
       <Link className="flex items-center" href="/#home">
         <span className="w-14 font-light text-7xl">#</span>
-        <h1 className="font-medium text-6xl">HARIMART</h1>
+        <h1 className="font-medium text-6xl">Haffmart</h1>
       </Link>
       <div className="flex items-center">
+        <Link href="/admin">Admin</Link>
         <label className="flex justify-end mx-4" htmlFor={`cart-modal`}>
           <span className="absolute text-white p-px px-1 h-fit w-fit justify-items-center items-center bg-red-700 rounded-full text-xs font-bold">
             {cart.length}

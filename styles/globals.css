@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 @layer base {
   /* html {
@@ -10,3 +11,27 @@
     @apply box-border overflow-x-hidden bg-stone-50;
   }
 }
+
+.bg-image-linear-gradient-v {
+  background-image: linear-gradient(180deg, #bca6ff, #fff 62%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#bca6ff),
+    color-stop(62%, #fff)
+  );
+}
+
+.bg-image-linear-gradient-h {
+  background-image: linear-gradient(90deg, #fff, #ded4ff 50%, #ded4ff);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#fff),
+    color-stop(50%, #ded4ff),
+    to(#ded4ff)
+  );
+}
+
