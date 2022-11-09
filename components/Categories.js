@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link"
 
 export const categories = [
   {
     id: 1,
-    name: "Man's Clothing",
+    name: "Men's Clothing",
     image: "/static/man-cloth.png",
   },
   {
@@ -33,6 +34,7 @@ export default function Categories() {
           {categories.map((category) => (
             <div key={category.id} className="flex flex-col items-center m-4">
               <h2 className="text-xl font-medium">{category.name}</h2>
+              <Link href="/products">         
               <Image
                 className="w-20"
                 alt="category"
@@ -40,6 +42,7 @@ export default function Categories() {
                 width={80}
                 height={80}
               />
+              </Link>
             </div>
           ))}
         </div>
