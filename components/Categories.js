@@ -30,18 +30,18 @@ export default function Categories() {
     <div className="flex flex-col items-center my-14">
       <h1 className="text-4xl font-medium">CATEGORIES</h1>
       <div className="flex flex-wrap justify-center">
-        <div className="flex justify-center items-center gap-x-10">
+        <div className="flex justify-center whitespace-nowrap items-center gap-x-10">
           {categories.map((category) => (
             <div key={category.id} className="flex flex-col items-center m-4">
               <h2 className="text-xl font-medium">{category.name}</h2>
-              <Link href="/products">         
-              <Image
-                className="w-20"
-                alt="category"
-                src={category.image}
-                width={80}
-                height={80}
-              />
+              <Link href="/products">
+                <Image
+                  className="lg:w-20 sm:w-16"
+                  alt="category"
+                  src={category.image}
+                  width={80}
+                  height={80}
+                />
               </Link>
             </div>
           ))}

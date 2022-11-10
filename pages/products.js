@@ -95,7 +95,9 @@ export default function Products() {
             >
               <option value="all">All</option>
               {uniqueCategory.map((category, id) => (
-                <option key={id} value={category}>{category}</option>
+                <option key={id} value={category}>
+                  {category}
+                </option>
               ))}
             </select>
           </div>
@@ -110,10 +112,9 @@ export default function Products() {
             </select>
           </div>
         </div>
-
       </div>
 
-      <div className="grid grid-cols-3 -mr-px mb-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 -mr-px my-8">
         {product.map((item, id) => (
           <CardItem key={id} dataProduct={item} />
         ))}
