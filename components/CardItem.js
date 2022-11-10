@@ -45,9 +45,10 @@ export default function CardItem({ dataProduct }) {
         </p>
       </div>
       <label htmlFor="modal-product">
-        <Link href={{ pathname: "/detail/[slug]", query: { slug: dataProduct?.id } }}>
+        {/* <Link href={{ pathname: "/detail/[slug]", query: { slug: dataProduct?.id } }}> */}
       {/* Link to : detail/product?id=1 */}
           {/* <Link href={`/detail?product=${dataProduct?.id}`}> */}
+        <label htmlFor={`card-modal`} className="cursor-pointer">
           <Image
             className="justify-self-center px-10 w-4/5 my-4"
             src={dataProduct?.image}
@@ -58,7 +59,8 @@ export default function CardItem({ dataProduct }) {
             width={300}
             height={300}
           />
-        </Link>
+        </label>
+        {/* </Link> */}
       </label>
       <div className="flex bottom-0 justify-between px-2">
         <div className="grid place-items-center">

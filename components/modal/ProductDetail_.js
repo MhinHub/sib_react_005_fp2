@@ -1,49 +1,26 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../context/products-slice";
-import { useRouter } from "next/router";
-import { getProductDetail } from "../../pages/api"
-import Link from "next/link";
+import Image from "next/image";
+import { BsCartPlus, BsCartCheckFill, BsStarFill } from "react-icons/bs";
+import { getProductDetail } from "../../pages/api";
 
-export default async function ProductDetail({ products }) {
+
+export default function ProductDetail() {  
   const dispatch = useDispatch();
-  // const [data, setData] = useState(null);
-  // const [quantity, setQuantity] = useState(1);
-  // const { products } = useSelector((state) => state.data);
-
-  const router = useRouter();
-  const { product } = router.query;
-
-  // useEffect(() => {
-  //   getProductDetail(product).then((res) => {
-  //     setData(res.data);
-  //   });
-  // }, [product]);
-
-  // menampilkan detail produk berdasarkan id pada product
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [desc, setDesc] = useState("");
-  const [image, setImage] = useState("");
+  const { cart } = useSelector((state) => state.data);
+  const [isAddCart, setIsAddCart] = useState(false);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    products.map((item) => {
-      if (item.id == product) {
-        console.log(item.description);
-        const { title, description, price, image } = item;
-        setTitle(title);
-        setPrice(price);
-        setDesc(description);
-        setImage(image);
-      }
-    })
-  }, [product]);
+    const { data } = getProductDetail();
+    setProduct(data);
+  }, []);
 
-
-  console.log("product ", product);
-  console.log(price);
-
-
+  const handleAddCart = (product) => {
+    dispatch(addCart(product));
+    setIsAddCart(true);
+  };
 
   // Get the value of an Input field
   const [value, setValue] = useState(0);
@@ -70,48 +47,101 @@ export default async function ProductDetail({ products }) {
     }
   };
 
-  // products.map((item) => {
-  //   if (item.id == product) {
   return (
     <>
-      <input type="checkbox" id="modal-product" className="modal-toggle" />
+      <input type="checkbox" id="card-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="modal-product"
+            htmlFor="card-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h1>{title}</h1>
-
-
-          {/* {products.map((item) => {
-            if (item.id == product) {
-              <h1>{item.title}</h1>
-            }
-          })} */}
-
-
-          {/* {data ? (
-            <h1>{data.title}</h1>
-          ) : (
-            <h1>Product not found</h1>
-          )
-          } */}
-
-
-          {/* <img src={products.image} alt={products.title} />
-          <p>{products.description}</p>
-          <p>Stock: {products.stock}</p>
-          <p>Price: {products.price}</p>
-          <button onClick={() => handleMinusCart(products)}>-</button>
-          <input type="number" value={value} />
-          <button onClick={() => handlePlusCart(products)}>+</button> */}
+          <div className="flex flex-col">
+            <div className="flex justify-center">
+              <Image
+                className="justify-self-center px-10 w-4/5 my-4"
+                src={product?.image}
+                alt="random image"
+                // placeholder="blur"
+                // blurDataURL={dataProduct?.image}
+                loading="lazy"
+                width={300}
+                height={300}
+              />
+            </div>
+            <div className="flex justify-center">
+              <p className="font-base text-center">{product?.title}</p>
+            </div>
+            <div className="flex justify-center">
+              <p className="font-base text-center">{product?.category}</p>
+            </div>
+            <div className="flex justify-center">
+              <p className="font-base text-center">
+                ${`${product?.price.toFixed(2)}`}
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <p className="font-base text-center">{product?.description}</p>
+            </div>
+            <div className="flex justify-center">
+              <div className="flex flex-row">
+                <div className="flex flex-row">
+                  <BsStarFill className="text-yellow-400" />
+                  <BsStarFill className="text-yellow-400" />
+                  <BsStarFill className="text-yellow-400" />
+                  <BsStarFill className="text-yellow-400" />
+                  <BsStarFill className="text-yellow-400" />
+                </div>
+                <div className="flex flex-row">
+                  <p className="font-base text-center">5.0</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="flex flex-row">
+                <div className="flex flex-row">
+                  <p className="font-base text-center">Stock: </p>
+                </div>
+                <div className="flex flex-row">
+                  <p className="font-base text-center">{product?.stock}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="flex flex-row">
+                <div className="flex flex-row">
+                  <p className="font-base text-center">Quantity: </p>
+                </div>
+                <div className="flex flex-row">
+                  <button
+                    className="btn btn-sm btn-circle"
+                    onClick={() => handleMinusCart(product)}
+                  >
+                    -
+                  </button>
+                  <p className="font-base text-center">{value}</p>
+                  <button
+                    className="btn btn-sm btn-circle"
+                    onClick={() => handlePlusCart(product)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="btn btn-sm btn-circle"
+                onClick={() => handleAddCart(product)}
+              >
+                {isAddCart ? <BsCartCheckFill /> : <BsCartPlus />}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
 }
-//   });
-// }

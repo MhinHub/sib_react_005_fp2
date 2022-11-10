@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import CartUser from "./modal/CartUser";
 import Footer from "./Footer"
 import ProductDetail from "./modal/ProductDetail_";
+import Login from "./modal/Login";
 
 export default function layout({ title, children }) {
   return (
@@ -18,6 +19,7 @@ export default function layout({ title, children }) {
         />
       </Head>
       <main>
+        <Login />
         {children}
         <CartUser />
         {/* <ProductDetail /> */}

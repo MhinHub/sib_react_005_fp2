@@ -8,15 +8,16 @@ function Nav({ account }) {
   return (
     <nav
       id="home"
-      className="flex bg-white sticky z-50 border-y border-black justify-between px-8 items-center overflow-hidden top-0"
+      className="flex bg-white sticky z-40 border-y border-black justify-between px-8 items-center overflow-hidden top-0"
     >
       <Link className="flex items-center" href="/#home">
         <span className="w-14 font-light text-7xl">#</span>
         <h1 className="font-medium text-6xl">Haffmart</h1>
       </Link>
       <div className="flex items-center">
-        <Link href="/admin">Admin</Link>
-        <label className="flex justify-end mx-4" htmlFor={`cart-modal`}>
+        <label className="flex justify-end mx-4 cursor-pointer" htmlFor="login-modal">Login</label>
+        {/* <Link href="/admin">Admin</Link> */}
+        <label className="flex justify-end mx-4 cursor-pointer" htmlFor={`cart-modal`}>
           <span className="absolute text-white p-px px-1 h-fit w-fit justify-items-center items-center bg-red-700 rounded-full text-xs font-bold">
             {cart.length}
           </span>

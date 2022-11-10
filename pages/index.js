@@ -5,7 +5,7 @@ import Nav from "../components/Nav";
 import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 import Layout from "../components/Layout";
-import { getProducts } from "./api";
+import { getProducts, users } from "./api";
 import ProductDetail from "../components/modal/ProductDetail_";
 
 import Detail from "./detail/[slug]";
@@ -21,8 +21,9 @@ export async function getStaticProps() {
       products: data?.map((product) => ({
         ...product,
         stock: 10,
-      })),
+      }))
     },
+    revalidate: 86400, // = 1 day
   };
 }
 

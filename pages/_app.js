@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import NextNprogress from "nextjs-progressbar";
+import React from "react";
 
 export default function MyApp({
     Component,
@@ -12,7 +13,7 @@ export default function MyApp({
 }) {
     return (
         <SessionProvider session={session}>
-            <Provider store={store}>
+            <Provider store={store} >
                 <PersistGate loading={null} persistor={persistor}>
                     <NextNprogress
                         color="#bca6ff"
@@ -25,7 +26,7 @@ export default function MyApp({
                     />
                     <Component {...pageProps} />
                 </PersistGate>
-            </Provider>
+            </Provider >
         </SessionProvider>
     );
 }
