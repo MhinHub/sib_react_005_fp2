@@ -114,7 +114,7 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 -mr-px my-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 -mr-px my-8">
         {product.map((item, id) => (
           <CardItem key={id} dataProduct={item} />
         ))}

@@ -18,7 +18,7 @@ export default function TopProducts({ products }) {
   return (
     <div className="my-8">
       <h2 className="ml-8 text-4xl font-medium">TOP 3 BESTSELLER</h2>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 -mr-px my-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 -mr-px my-8">
         {products.slice(0, 3).map((product, id) => (
           <CardItem key={id} dataProduct={product} />
         ))}

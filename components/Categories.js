@@ -36,7 +36,7 @@ export default function Categories() {
               <h2 className="text-xl font-medium">{category.name}</h2>
               <Link href="/products">
                 <Image
-                  className="lg:w-20 sm:w-16"
+                  className="lg:w-20 w-14"
                   alt="category"
                   src={category.image}
                   width={80}

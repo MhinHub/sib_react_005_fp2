@@ -40,12 +40,10 @@ function Nav() {
       className="flex bg-white sticky z-40 border-y border-black justify-between px-8 items-center overflow-hidden top-0"
     >
       <Link className="flex items-center" href="/#home">
-        <span className="w-14 font-light md:text-6xl sm:text-6xl lg:text-7xl">
+        <span className="w-14 font-light md:text-6xl text-5xl lg:text-7xl">
           #
         </span>
-        <h1 className="font-medium lg:text-6xl md:text-4xl sm:text-2xl">
-          Hashop
-        </h1>
+        <h1 className="font-medium lg:text-6xl md:text-4xl text-2xl">Hashop</h1>
       </Link>
       <div className="flex items-center">
         <Link className="mx-4" href="/admin">

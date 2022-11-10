@@ -58,7 +58,7 @@ export default function CardItem({ dataProduct }) {
         {/* <Link href={`/detail?product=${dataProduct?.id}`}> */}
         <label htmlFor={`card-modal`} className="cursor-pointer">
           <Image
-            className="justify-self-center px-10 w-4/5 my-4"
+            className="flex mx-auto justify-self-center px-10 w-4/5 my-4"
             src={dataProduct?.image}
             alt="random image"
             // placeholder="blur"
