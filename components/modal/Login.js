@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../../pages/api";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // <-- this is the new import nextjs13 beta
 import Link from "next/link";
 
 export default function Login() {
@@ -14,24 +15,24 @@ export default function Login() {
   // console.log("authenticate: ", authenticate);
   // console.log("authenticate role ", authenticate.role);
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setEmail] = useState("johnd");
+  const [password, setPassword] = useState("m38rmF$");
+  const [isAuth, setIsAuth] = useState(authenticate);
 
   const [welcome, setWelcome] = useState("");
 
   useEffect(() => {
     isAdmin ? setWelcome("Admin") : setWelcome("User");
-  }, [isAdmin]);
+  }, [isAuth]);
 
   // useEffect(() => {
   //     if (authenticate) {
   //         authenticate.role === "user" ? router.push("/") : router.push("/admin");
   //     }
-  // }, [username, password])
+  // }, [email, password])
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-
     if (username === "admin@hashop.id" && password === "admin123") {
       const auth = {
         token: "token-admin",
@@ -40,27 +41,29 @@ export default function Login() {
       localStorage.setItem("auth", JSON.stringify(auth));
       router.push("/admin");
     } else {
-      auth({ username, password })
+      auth({ username: username, password: password })
         .then((res) => {
           const auth = {
             token: res.data.token,
             role: "user",
           };
           localStorage.setItem("auth", JSON.stringify(auth));
-          router.push("/");
+          router.push("/#home");
         })
         .catch((err) => {
           alert(err.response.data.message);
         });
     }
-    setUsername("");
+    setEmail("");
     setPassword("");
-  };
+  }
 
-  const handleLogout = () => {
+  function handleLogout() {
     localStorage.removeItem("auth");
-    router.push("/#home");
-  };
+    setIsAuth(!isAuth);
+    router.refresh();
+    // router.push("/#home");
+  }
 
   return (
     <>
@@ -98,9 +101,9 @@ export default function Login() {
                       <input
                         type="text"
                         className="w-full px-3 py-2 text-sm text-gray-900 placeholder-gray-400 bg-white border border-gray-300 rounded-none focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                        placeholder="Username/Email"
+                        placeholder="Email"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                       />
                     </div>
@@ -130,13 +133,14 @@ export default function Login() {
                   <Link
                     href="https://fakestoreapi.com/users"
                     className="underline text-sm text-gray-600 hover:text-gray-900 my-4"
+                    target={"_blank"}
                   >
-                    As user use username and password from this link
+                    As user use email and password from this link
                   </Link>
                   <p>Or</p>
                   <p className="flex flex-col justify-start text-sm">
                     As admin use
-                    <span>username: admin@hashop.id</span>
+                    <span>email: admin@hashop.id</span>
                     <span>password: admin123</span>
                   </p>
                 </>

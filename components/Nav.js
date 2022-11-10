@@ -28,7 +28,7 @@ function Nav() {
         setTxtSales("Sales Recaps");
         setTxtUpdateCart("Update Cart");
         setShowCart(false);
-      } else if (auth.role === "user") {
+      } else if (authenticate.role === "user") {
         setTxtBtnAccount("User");
       }
     }
