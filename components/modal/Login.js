@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { auth } from '../../pages/api'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function Login() {
     const router = useRouter()
@@ -13,16 +14,16 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {
-        if (authenticate) {
-            authenticate.role === "user" ? router.push("/") : router.push("/admin");
-        }
-    }, [username, password])
+    // useEffect(() => {
+    //     if (authenticate) {
+    //         authenticate.role === "user" ? router.push("/") : router.push("/admin");
+    //     }
+    // }, [username, password])
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (username === "admin@haffmart.id" && password === "admin123") {
+        if (username === "admin@hashop.id" && password === "admin123") {
             const auth = {
                 token: "token-admin",
                 role: "admin",
@@ -93,6 +94,22 @@ export default function Login() {
                                     <span className="btn-text">Cancel</span>
                                 </label>
                             </form>
+                            <Link
+                                href="https://fakestoreapi.com/users"
+                                className='underline text-sm text-gray-600 hover:text-gray-900 my-4'
+                            >
+                                As user use username and password from this link
+                            </Link>
+                            <p>Or</p>
+                            <p className='flex flex-col justify-start text-sm'>
+                                As admin use
+                                <span>
+                                    username: admin@hashop.id
+                                </span>
+                                <span>
+                                    password: admin123
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>

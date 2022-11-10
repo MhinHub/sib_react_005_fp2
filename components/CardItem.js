@@ -1,7 +1,7 @@
 import { BsCartPlus, BsStar, BsCartCheckFill, BsStarFill } from "react-icons/bs";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useContext, createContext } from "react";
+import { useState, useEffect } from "react";
 import { addCart } from "../context/products-slice";
 import Link from "next/link";
 
@@ -11,9 +11,17 @@ export default function CardItem({ dataProduct }) {
 
   const [isAddCart, setIsAddCart] = useState(false);
 
-  // const idData = createContext(dataProduct.id);
-  // const idDataCart = useContext(idData);
-  // console.log('tesss', idDataCart);
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  // alert base on auth role
+  const alertCart = () => {
+    if (!auth) {
+      alert("You must login first");
+    } else if (auth.role === "admin") {
+      alert("You're admin, must login as user");
+    } else {
+      alert("Product added to cart");
+    }
+  };
 
   function isAddedCart(data) {
     const isProductFound = cart.some((item) => {
@@ -46,8 +54,8 @@ export default function CardItem({ dataProduct }) {
       </div>
       <label htmlFor="modal-product">
         {/* <Link href={{ pathname: "/detail/[slug]", query: { slug: dataProduct?.id } }}> */}
-      {/* Link to : detail/product?id=1 */}
-          {/* <Link href={`/detail?product=${dataProduct?.id}`}> */}
+        {/* Link to : detail/product?id=1 */}
+        {/* <Link href={`/detail?product=${dataProduct?.id}`}> */}
         <label htmlFor={`card-modal`} className="cursor-pointer">
           <Image
             className="justify-self-center px-10 w-4/5 my-4"

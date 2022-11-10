@@ -33,6 +33,15 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           />
+          <link
+            rel="manifest"
+            href="/manifest.json"
+          />
+          <link
+            rel="apple-touch-icon"
+            href="/icon-192x192.png"
+          />
+          <meta name="theme-color" content="#000000" />
         </Head>
         <body>
           <Main />

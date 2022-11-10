@@ -25,7 +25,7 @@ export default function Welcome() {
         </Marquee>
       </div>
       <div className="flex flex-col my-auto items-center">
-        <h1 className="text-9xl font-extrabold">Welcome to Haffmart</h1>
+        <h1 className="text-9xl font-extrabold">Welcome to Hashop</h1>
         <h2 className="text-2xl font-light">More you buy more we sell</h2>
         {/*Todo:  animation bottom*/}
       </div>

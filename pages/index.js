@@ -38,7 +38,7 @@ export default function Index({ products }) {
         side
         title={"Be Gentle Men"}
         desc={
-          "Fashion is not only for women, fashion is also very closely related to men and seems to have become a necessity. Therefore, Haffmart also seeks to answer this men's fashion needs by offering best shoes for you "
+          "Fashion is not only for women, fashion is also very closely related to men and seems to have become a necessity. Therefore, Hashop also seeks to answer this men's fashion needs by offering best shoes for you "
         }
         src={"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"}
         txtBtn={"Shop Now"}
@@ -46,7 +46,7 @@ export default function Index({ products }) {
       <HeroProduct
         title={"Don't act like Angle"}
         desc={
-          "Women's and fashion is very closely related to women and seems to have become a basic need. Therefore, Haffmart also seeks to answer"
+          "Women's and fashion is very closely related to women and seems to have become a basic need. Therefore, Hashop also seeks to answer"
         }
         src={"https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"}
         txtBtn={"Discover Now"}
