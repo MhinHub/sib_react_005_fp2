@@ -10,28 +10,31 @@ export default function admin() {
   const { products } = useSelector((state) => state.data);
   const [stockItem, setStockItem] = useState([...products]);
 
-  const auth = JSON.parse(localStorage.getItem("auth"));
+  const authenticate = JSON.parse(localStorage.getItem("auth"));
 
   const router = useRouter();
 
+  const isAdmin = authenticate && authenticate.role === "admin";
+  const isUser = authenticate && authenticate.role === "user";
+
   useEffect(() => {
-    if (!auth) {
-      alert("You must login first");
-    } else {
+    if (!authenticate || isUser || !isAdmin) {
       alert("You must login as admin");
-      auth.role !== "admin" && router.push("/");
+      router.push("/");
     }
-  }, []);
+  }, [authenticate]);
 
   return (
     <>
-      {auth && auth.role === "admin" ? (
+      {isAdmin ? (
         <Layout title="Stock - Admin">
           <Nav />
           <StockAdmin stock={stockItem} setStock={setStockItem} />
         </Layout>
       ) : (
-        <h1 className="grid text-5xl font-bold text-center animate-pulse self-center place-self-center mt-96">Redirect to Home</h1>
+        <h1 className="grid text-5xl font-bold text-center animate-pulse self-center place-self-center mt-60">
+          Redirect to Home
+        </h1>
       )}
     </>
   );
