@@ -1,12 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
 import { initiateProducts } from "../context/products-slice";
-import CardItem from "../components/CardItem";
 import { useState, useEffect } from "react";
 import Navbar from "../components/Nav";
 import Image from "next/image";
 import { SiHashnode } from "react-icons/si";
 import Layout from "../components/Layout";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+import CardSkeleton from "../components/CardSkeleton";
 
+const CardItem = dynamic(() => import("../components/CardItem"), {
+  suspense: true,
+});
 
 const categories = [
   {
@@ -31,7 +36,6 @@ const categories = [
   },
 ];
 
-
 export default function Products() {
   const dispatch = useDispatch();
   const { firstRender, products } = useSelector((state) => state.data);
@@ -42,11 +46,11 @@ export default function Products() {
 
   const [imageCategory, setImageCategory] = useState("all");
 
-  const uniqueCategory = [...new Set(products.map((item) => item.category))];  // unique category by products
+  const uniqueCategory = [...new Set(products.map((item) => item.category))]; // unique category by products
 
   useEffect(() => {
     const image = categories.find((item) => item.name === category);
-    image ? setImageCategory(image?.image) : 'all';
+    image ? setImageCategory(image?.image) : "all";
   }, [category]);
 
   // console.log("imageCategory", imageCategory);
@@ -56,7 +60,9 @@ export default function Products() {
     if (category === "all") {
       setProduct(products);
     } else {
-      const filterProduct = products.filter((item) => item.category === category);
+      const filterProduct = products.filter(
+        (item) => item.category === category
+      );
       setProduct(filterProduct);
     }
   }, [category, products]);
@@ -116,7 +122,9 @@ export default function Products() {
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-screen pr-px lg:pr-0 lg:-mr-px my-8">
         {product.map((item, id) => (
-          <CardItem key={id} dataProduct={item} />
+          <Suspense key={id} fallback={<CardSkeleton />}>
+            <CardItem key={id} dataProduct={item} />
+          </Suspense>
         ))}
       </div>
     </Layout>

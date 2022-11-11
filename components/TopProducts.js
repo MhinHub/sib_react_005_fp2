@@ -1,10 +1,14 @@
-import CardItem from "./CardItem";
 import React from "react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { initiateProducts } from "../context/products-slice";
 import { getProducts } from "../pages/api/index";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+import CardSkeleton from "./CardSkeleton";
+
+const CardItem = dynamic(() => import("./CardItem"), { suspense: true });
 
 // metode fetching data getStaticProps() hanya bisa dilakukan di pages, tidak secara langsung di components
 
@@ -22,7 +26,9 @@ export default function TopProducts({ products }) {
       </h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-screen pr-px lg:pr-0 lg:-mr-px my-8">
         {products.slice(0, 3).map((product, id) => (
-          <CardItem key={id} dataProduct={product} />
+          <Suspense key={id} fallback={<CardSkeleton />}>
+            <CardItem key={id} dataProduct={product} />
+          </Suspense>
         ))}
       </div>
       <Link
