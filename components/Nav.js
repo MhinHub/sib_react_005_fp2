@@ -39,7 +39,7 @@ function Nav() {
   return (
     <nav
       id="home"
-      className="flex bg-white sticky z-40 border-y border-black justify-between px-8 items-center overflow-hidden top-0"
+      className="flex bg-white sticky z-40 border-y border-black justify-between lg:px-8 pr-0 pl-2 items-center overflow-hidden top-0"
     >
       <Link className="flex items-center" href="/#home">
         <span className="w-14 font-light md:text-6xl text-5xl lg:text-7xl">
@@ -47,7 +47,7 @@ function Nav() {
         </span>
         <h1 className="font-medium lg:text-6xl md:text-4xl text-2xl">Hashop</h1>
       </Link>
-      <div className="flex items-center">
+      <div className="flex lg:items-center items-end">
         <Link className="mx-4" href="/admin/update-stock">
           {txtUpdateStock}
         </Link>

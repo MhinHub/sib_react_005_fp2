@@ -77,7 +77,7 @@ export default function CartUser() {
   return (
     <>
       <input type="checkbox" id="cart-modal" className="modal-toggle" />
-      <label className="modal" htmlFor="cart-modal">
+      <label className="modal modal-middle" htmlFor="cart-modal">
         <label
           htmlFor=""
           className="modal-box relative font-mono m-12 overflow-x-hidden w-11/12 max-w-5xl flex flex-col"
@@ -87,12 +87,12 @@ export default function CartUser() {
           </h1>
           <br />
           {dataCart.length >= 1 ? (
-            <div className="flex flex-col">
+            <div className="flex flex-col overflow-x-scroll">
               {dataCart.map((data) => {
                 return (
                   <div
                     key={data.id}
-                    className="flex font-mono my-4 pb-4 justify-between border-b border-solid border-black"
+                    className="flex font-mono my-4 pb-4 overflow-x-scroll max-w-max w-max lg:justify-between border-b border-solid border-black"
                   >
                     <div className="flex px-10">
                       <Image
@@ -102,9 +102,9 @@ export default function CartUser() {
                         height={160}
                         loading="lazy"
                       />
-                      <div className="flex flex-col justify-between ml-4 py-6 pb-4">
+                      <div className="flex flex-col justify-start lg:justify-between ml-4 py-6 pb-4">
                         <div>
-                          <h2 className="font-medium text-lg w-full">
+                          <h2 className="lg:font-medium lg:text-lg font-normal lg:leading-5 text-base w-min lg:w-96">
                             {data.title}
                           </h2>
                           <p className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
@@ -134,7 +134,9 @@ export default function CartUser() {
                           />
                           <button
                             onClick={() => handlePlusCart(data)}
-                            className={`${data.isOverStock ? "bg-gray-300" : "bg-black"} text-white px-2 w-8 h-8 text-2xl`}
+                            className={`${
+                              data.isOverStock ? "bg-gray-300" : "bg-black"
+                            } text-white px-2 w-8 h-8 text-2xl`}
                           >
                             +
                           </button>

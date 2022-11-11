@@ -28,12 +28,16 @@ export const categories = [
 export default function Categories() {
   return (
     <div className="flex flex-col items-center my-14">
-      <h1 className="text-4xl font-medium">CATEGORIES</h1>
-      <div className="flex flex-wrap justify-center">
-        <div className="flex justify-center whitespace-nowrap items-center gap-x-10 overflow-x-visible">
+      <h1 className="lg:text-4xl md:text-3xl text-2xl font-medium">
+        CATEGORIES
+      </h1>
+      <div className="flex flex-wrap overflow-x-scroll justify-center w-screen">
+        <div className="flex justify-center whitespace-nowrap items-center gap-x-10">
           {categories.map((category) => (
             <div key={category.id} className="flex flex-col items-center m-4">
-              <h2 className="text-xl font-medium">{category.name}</h2>
+              <h2 className="lg:text-xl text-lg font-medium">
+                {category.name}
+              </h2>
               <Link href="/products">
                 <Image
                   className="lg:w-20 w-14"

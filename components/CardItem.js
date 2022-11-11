@@ -46,7 +46,9 @@ export default function CardItem({ dataProduct }) {
     <article className="grid font-mono box-border border content-between max-h-fit border-solid border-black ml-[-1px] mb-[-1px] bg-stone-50 px-6 py-4">
       <div className="flex justify-between">
         <div className="flex flex-col">
-          <p className="w-auto font-base pr-8">{dataProduct?.title}</p>
+          <p className="w-auto font-base leading-5 pr-8">
+            {dataProduct?.title}
+          </p>
           <p className="bg-stone-200 px-2 py-0 h-fit w-fit text-sm text-gray-700">
             {dataProduct?.category}
           </p>
