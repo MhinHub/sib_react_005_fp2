@@ -11,7 +11,7 @@ function Nav() {
   const [txtSales, setTxtSales] = useState(null);
   const [isBtnAccountClicked, setIsBtnAccountClicked] = useState(false);
   const [showCart, setShowCart] = useState(true);
-  const [txtUpdateCart, setTxtUpdateCart] = useState(null);
+  const [txtUpdateStock, setTxtUpdateStock] = useState(null);
 
   const authenticate = JSON.parse(localStorage.getItem("auth"));
 
@@ -21,14 +21,16 @@ function Nav() {
 
   useEffect(() => {
     if (!authenticate) {
+      setShowCart(false);
       return;
     } else {
       if (authenticate.role === "admin") {
         setTxtBtnAccount("Admin");
         setTxtSales("Sales Recaps");
-        setTxtUpdateCart("Update Cart");
+        setTxtUpdateStock("Update Stock");
         setShowCart(false);
       } else if (authenticate.role === "user") {
+        setShowCart(true);
         setTxtBtnAccount("User");
       }
     }
@@ -46,10 +48,10 @@ function Nav() {
         <h1 className="font-medium lg:text-6xl md:text-4xl text-2xl">Hashop</h1>
       </Link>
       <div className="flex items-center">
-        <Link className="mx-4" href="/admin">
-          {txtUpdateCart}
+        <Link className="mx-4" href="/admin/update-stock">
+          {txtUpdateStock}
         </Link>
-        <Link className="mx-4" href="/Sales">
+        <Link className="mx-4" href="/admin/sales-recap">
           {txtSales}
         </Link>
         {showCart && (

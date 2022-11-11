@@ -23,7 +23,7 @@ export default function Login() {
 
   useEffect(() => {
     isAdmin ? setWelcome("Admin") : setWelcome("User");
-  }, [isAuth]);
+  }, [authenticate]);
 
   // useEffect(() => {
   //     if (authenticate) {
@@ -39,7 +39,7 @@ export default function Login() {
         role: "admin",
       };
       localStorage.setItem("auth", JSON.stringify(auth));
-      router.push("/admin");
+      router.push("/#home");
     } else {
       auth({ username: username, password: password })
         .then((res) => {
@@ -101,7 +101,7 @@ export default function Login() {
                       <input
                         type="text"
                         className="w-full px-3 py-2 text-sm text-gray-900 placeholder-gray-400 bg-white border border-gray-300 rounded-none focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                        placeholder="Email"
+                        placeholder="Email/Username"
                         value={username}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -148,7 +148,7 @@ export default function Login() {
               {authenticate && (
                 <>
                   <h1 className="text-xl font-semibold text-center text-black">
-                    Welcome {welcome}
+                    Welcome back {welcome}
                   </h1>
                   <button
                     type="submit"

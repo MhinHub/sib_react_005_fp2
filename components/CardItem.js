@@ -1,4 +1,9 @@
-import { BsCartPlus, BsStar, BsCartCheckFill, BsStarFill } from "react-icons/bs";
+import {
+  BsCartPlus,
+  BsStar,
+  BsCartCheckFill,
+  BsStarFill,
+} from "react-icons/bs";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -18,14 +23,12 @@ export default function CardItem({ dataProduct }) {
       alert("You must login first");
     } else if (auth.role === "admin") {
       alert("You're admin, must login as user");
-    } else {
-      alert("Product added to cart");
     }
   };
 
   function isAddedCart(data) {
     const isProductFound = cart.some((item) => {
-      if (item.id === data.id) {
+      if (item.id === data.id && auth) {
         return true;
       }
       return false;
@@ -70,16 +73,21 @@ export default function CardItem({ dataProduct }) {
         </label>
         {/* </Link> */}
       </label>
-      <div className="flex bottom-0 justify-between px-2">
+      <div className="flex bottom-0 justify-between px-2 min-h-max">
         <div className="grid place-items-center">
           <span className="absolute pt-1 text-sm font-semibold">
             {dataProduct?.rating.rate.toFixed()}
           </span>
           <BsStarFill className="text-slate-300" size={30} />
         </div>
-        <button onClick={() => handleAddCart(dataProduct)}>
-          {isAddedCart(dataProduct) ? (
-            <BsCartCheckFill className="self-center" size={30} />
+        <button onClick={() => (handleAddCart(dataProduct), alertCart())}>
+          {auth?.role === "user" && isAddedCart(dataProduct) ? (
+            <span
+              className="tooltip tooltip-left tooltip-open"
+              data-tip="Added to cart"
+            >
+              <BsCartCheckFill className="self-center" size={30} />
+            </span>
           ) : (
             <BsCartPlus className="self-center" size={30} />
           )}
