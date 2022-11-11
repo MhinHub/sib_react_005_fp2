@@ -39,7 +39,7 @@ function Nav() {
   return (
     <nav
       id="home"
-      className="flex bg-white sticky z-40 border-y border-black justify-between lg:px-8 pr-0 pl-2 items-center overflow-hidden top-0"
+      className="flex bg-white sticky z-40 border-y border-black justify-between w-screen lg:px-8 pr-0 pl-2 items-center overflow-hidden top-0"
     >
       <Link className="flex items-center" href="/#home">
         <span className="w-14 font-light md:text-6xl text-5xl lg:text-7xl">
