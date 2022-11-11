@@ -43,7 +43,7 @@ export default function CardItem({ dataProduct }) {
   }
 
   return (
-    <article className="grid font-mono box-border border content-between max-h-fit border-solid border-black ml-px lg:-ml-px mb-[-1px] bg-stone-50 px-6 py-4">
+    <article className="grid font-mono box-border border content-between max-h-fit border-solid border-black ml-1 lg:-ml-px mb-[-1px] bg-stone-50 px-6 py-4">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <p className="w-auto font-base leading-5 pr-8">
