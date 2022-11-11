@@ -70,7 +70,7 @@ export default function Products() {
 
   return (
     <Layout title="Products">
-      <div className="bg-image-linear-gradient-v">
+      <div className="bg-image-linear-gradient-v w-full">
         <Navbar />
         {imageCategory === "all" ? (
           <p className="mx-auto my-14 w-40 h-40 ">
