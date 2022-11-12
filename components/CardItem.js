@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect, useRef, createRef, createContext } from "react";
 import { addCart } from "../context/products-slice";
 import ProductDetail from "./modal/ProductDetail";
-// import Link from "next/link";
+import Link from "next/link";
 
 // const handleIdModal = (event) => {
 //   let idForModal = null;
@@ -90,16 +90,21 @@ export default function CardItem({ dataProduct }) {
             ${`${dataProduct?.price.toFixed(2)}`}
           </p>
         </div>
-        {/* <Link href={{ pathname: "/detail/[slug]", query: { slug: dataProduct?.id } }}> */}
         {/* Link to : detail/product?id=1 */}
         {/* <Link href={`?${dataProduct?.id}`}> */}
-        <label
+        <Link
+          href={{
+            pathname: "/detail/[slug]",
+            query: { slug: dataProduct?.id },
+          }}
+        >
+          {/* <label
           htmlFor={`card-modal`}
           className="cursor-pointer"
           ref={refId}
           id={dataProduct?.id}
           onClick={handleIdModal}
-        >
+        > */}
           <Image
             className="flex mx-auto justify-self-center px-10 w-4/5 my-4"
             src={dataProduct?.image}
@@ -110,8 +115,8 @@ export default function CardItem({ dataProduct }) {
             width={300}
             height={300}
           />
-        </label>
-        {/* </Link> */}
+          {/* </label> */}
+        </Link>
         <div className="flex bottom-0 justify-between px-2 min-h-max">
           <div className="grid place-items-center">
             <span className="absolute pt-1 text-sm font-semibold">
