@@ -48,7 +48,7 @@ export default function ProductDetail() {
         <h1 className="mt-8 mb-4 text-center text-2xl font-semibold ">
           Detail Product
         </h1>
-        <div className="flex justify-center mx-auto w-4/5 self-center justify-self-center">
+        <div className="flex flex-col lg:flex-row justify-center mx-auto w-4/5 self-center justify-self-center">
           <div className="flex flex-col items-center w-full">
             <Image
               className="p-5"
