@@ -61,7 +61,7 @@ export default function CartUser() {
     }
   };
 
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   // function handlePlusCart() {
   //   inputRef.current.value++;
@@ -125,7 +125,6 @@ export default function CartUser() {
                             -
                           </button>
                           <input
-                            ref={inputRef}
                             type="text"
                             name="qty"
                             className="font-medium w-10 overflow-hidden text-center"

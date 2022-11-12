@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../context/products-slice";
 import { useRouter } from "next/router";
-import { getProductDetail } from "../api";
-import Link from "next/link";
 import Nav from "../../components/Nav";
 import Layout from "../../components/Layout";
+import Image from "next/image";
+import { BsCartFill, BsStarFill } from "react-icons/bs";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -17,71 +17,96 @@ export default function ProductDetail() {
   const product = products.find((item) => item.id === parseInt(slug));
 
   // Get the value of an Input field
-  //   const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
-  //   function handleChange(data, value) {
-  //     dispatch(
-  //       addCart({
-  //         cartData: data,
-  //         qty: value,
-  //         isCart: true,
-  //       })
-  //     );
-  //   }
+  function handleChange(data, value) {
+    dispatch(
+      addCart({
+        cartData: data,
+        qty: value,
+        isCart: true,
+      })
+    );
+  }
 
-  //   const handlePlusCart = (data) => {
-  //     setValue(value + 1);
-  //     handleChange(data, value + 1);
-  //   };
+  const handlePlusCart = (data) => {
+    setValue(value + 1);
+    handleChange(data, value + 1);
+  };
 
-  //   const handleMinusCart = (data) => {
-  //     if (value > 0) {
-  //       setValue(value - 1);
-  //       handleChange(data, value - 1);
-  //     }
-  //   };
-
-  // products.map((item) => {
-  //   if (item.id == product) {
+  const handleMinusCart = (data) => {
+    if (value > 0) {
+      setValue(value - 1);
+      handleChange(data, value - 1);
+    }
+  };
 
   return (
     <Layout title={"Detail Product"}>
       <Nav />
-      {/* <input type="checkbox" id="modal-product" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box relative">
-                    <label
-                        htmlFor="modal-product"
-                        className="btn btn-sm btn-circle absolute right-2 top-2"
-                    >
-                        ✕
-                    </label> */}
-      <h1>{product.title}</h1>
-
-      {/* {products.map((item) => {
-            if (item.id == product) {
-              <h1>{item.title}</h1>
-            }
-          })} */}
-
-      {/* {data ? (
-            <h1>{data.title}</h1>
-          ) : (
-            <h1>Product not found</h1>
-          )
-          } */}
-
-      {/* <img src={products.image} alt={products.title} />
-          <p>{products.description}</p>
-          <p>Stock: {products.stock}</p>
-          <p>Price: {products.price}</p>
-          <button onClick={() => handleMinusCart(products)}>-</button>
-          <input type="number" value={value} />
-          <button onClick={() => handlePlusCart(products)}>+</button> */}
-      {/* </div>
-            </div > */}
+      <section className="font-mono">
+        <h1 className="mt-8 mb-4 text-center text-2xl font-semibold ">
+          Detail Product
+        </h1>
+        <div className="flex justify-center mx-auto w-4/5 self-center justify-self-center">
+          <div className="flex flex-col items-center w-full">
+            <Image
+              className="p-5"
+              src={product.image}
+              alt={product.title}
+              width={280}
+              height={360}
+            />
+            <div className="flex justify-center   ">
+              <BsStarFill />
+              <span>{` ${product.rating.rate} (${product.rating.count})`}</span>
+            </div>
+          </div>
+          <div className="flex flex-col align-middle justify-center">
+            <p className="font-semibold text-xl">{product.title}</p>
+            <p>{product.description}</p>
+            <p className="bg-stone-200 px-2 py-0 h-fit w-fit font-bold text-sm text-gray-700">
+              {product?.category}
+            </p>
+            <div className="flex justify-between my-2">
+              <div>
+                <button
+                  onClick={() => handleMinusCart(product)}
+                  className={`bg-black text-white px-2 w-8 h-8 text-2xl`}
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  name="qty"
+                  className="font-medium w-10 mx-1 overflow-hidden text-black text-center border-none"
+                  value={value}
+                  min={1}
+                  onChange={(e) => handleChange(product, e.target.value)}
+                />
+                <button
+                  onClick={() => handlePlusCart(product)}
+                  className={`text-white px-2 w-8 h-8 text-2xl bg-black`}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-col items-end p-4">
+              <p className="font-semibold text-slate-800 text-base">
+                {`$${product.price.toFixed(2)}/pcs`}
+              </p>
+              <p className="font-bold text-2xl">
+                Total ${(product.price * value).toFixed(2)}
+              </p>
+            </div>
+            <button className="flex w-full h-12 bg-black gap-x-4 text-center justify-center items-center text-white font-semibold">
+              <BsCartFill />
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
-//   });
-// }
