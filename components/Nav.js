@@ -50,10 +50,10 @@ function Nav() {
         <h1 className="font-medium lg:text-6xl md:text-4xl text-2xl">Hashop</h1>
       </Link>
       <div className="flex lg:items-center items-end">
-        <Link className="mx-4" href="/admin/update-stock">
+        <Link className="lg:mx-4 mx-2" href="/admin/update-stock">
           {updateStockIcon}
         </Link>
-        <Link className="mx-4" href="/admin/sales-recap">
+        <Link className="lg:mx-4 mx-2" href="/admin/sales-recap">
           {salesIcon}
         </Link>
         {showCart && (
