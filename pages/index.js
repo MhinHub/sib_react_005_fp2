@@ -6,7 +6,6 @@ import TopProducts from "../components/TopProducts";
 import WelcomeSection from "../components/WelcomeSection";
 import Layout from "../components/Layout";
 import { getProducts, users } from "./api";
-import ProductDetail from "../components/modal/ProductDetail_";
 
 import Detail from "./detail/[slug]";
 
@@ -21,7 +20,7 @@ export async function getStaticProps() {
       products: data?.map((product) => ({
         ...product,
         stock: 10,
-      }))
+      })),
     },
     revalidate: 86400, // = 1 day
   };
@@ -68,7 +67,6 @@ export default function Index({ products }) {
         src={"https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"}
         txtBtn={"Buy Now"}
       />
-      {/* <Detail /> */}
     </Layout>
   );
 }

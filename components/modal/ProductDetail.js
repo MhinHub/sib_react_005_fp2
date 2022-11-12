@@ -1,21 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../context/products-slice";
 import Image from "next/image";
 import { BsCartPlus, BsCartCheckFill, BsStarFill } from "react-icons/bs";
-import { getProductDetail } from "../../pages/api";
+// import { getProductDetail } from "../../pages/api";
+import { CardContext } from "../CardItem";
 
-
-export default function ProductDetail() {  
+export default function ProductDetail() {
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.data);
+  const { cart, products } = useSelector((state) => state.data);
   const [isAddCart, setIsAddCart] = useState(false);
-  const [product, setProduct] = useState(null);
+  // const [product, setProduct] = useState(null);
 
+  const idForModal = useContext(CardContext);
   useEffect(() => {
-    const { data } = getProductDetail();
-    setProduct(data);
-  }, []);
+    console.log("idForModal", idForModal);
+  }, [CardContext]);
+
+  // get value CardContext
+  useEffect(() => {
+    console.log("idForModal", idForModal.id);
+  }, [CardContext]);
+
+  // get product using find
+  const product = products.find((item) => item.id === idForModal);
+
+  product && console.log("product", product);
 
   const handleAddCart = (product) => {
     dispatch(addCart(product));

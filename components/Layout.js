@@ -3,7 +3,7 @@ import Head from "next/head";
 import Nav from "./Nav";
 import CartUser from "./modal/CartUser";
 import Footer from "./Footer";
-import ProductDetail from "./modal/ProductDetail_";
+import ProductDetail from "./modal/ProductDetail";
 import Login from "./modal/Login";
 
 export default function layout({ title, children }) {
@@ -18,7 +18,7 @@ export default function layout({ title, children }) {
         <Login />
         {children}
         <CartUser />
-        {/* <ProductDetail /> */}
+        <ProductDetail />
         <Footer />
       </main>
     </>
