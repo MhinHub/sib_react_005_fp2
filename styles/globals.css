@@ -12,6 +12,18 @@
   }
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 .bg-image-linear-gradient-v {
   background-image: linear-gradient(180deg, #bca6ff, #fff 62%);
   background-image: -webkit-gradient(

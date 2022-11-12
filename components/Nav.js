@@ -3,15 +3,17 @@ import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { BsBagDashFill } from "react-icons/bs";
+import { FaReceipt } from "react-icons/fa";
 
 function Nav() {
   const { cart } = useSelector((state) => state.data);
 
   const [txtBtnAccount, setTxtBtnAccount] = useState("Login");
-  const [txtSales, setTxtSales] = useState(null);
   const [isBtnAccountClicked, setIsBtnAccountClicked] = useState(false);
   const [showCart, setShowCart] = useState(true);
-  const [txtUpdateStock, setTxtUpdateStock] = useState(null);
+  const [salesIcon, setSalesIcon] = useState(null);
+  const [updateStockIcon, setUpdateStockIcon] = useState(null);
 
   const authenticate = JSON.parse(localStorage.getItem("auth"));
 
@@ -26,15 +28,15 @@ function Nav() {
     } else {
       if (authenticate.role === "admin") {
         setTxtBtnAccount("Admin");
-        setTxtSales("Sales Recaps");
-        setTxtUpdateStock("Update Stock");
+        setSalesIcon(<FaReceipt size={30} />);
+        setUpdateStockIcon(<BsBagDashFill size={30} />);
         setShowCart(false);
       } else if (authenticate.role === "user") {
         setShowCart(true);
         setTxtBtnAccount("User");
       }
     }
-  }, [authenticate]);
+  }, [!authenticate]);
 
   return (
     <nav
@@ -49,10 +51,10 @@ function Nav() {
       </Link>
       <div className="flex lg:items-center items-end">
         <Link className="mx-4" href="/admin/update-stock">
-          {txtUpdateStock}
+          {updateStockIcon}
         </Link>
         <Link className="mx-4" href="/admin/sales-recap">
-          {txtSales}
+          {salesIcon}
         </Link>
         {showCart && (
           <label
@@ -67,7 +69,7 @@ function Nav() {
         )}
         <label
           onClick={handleLabelClick}
-          className="h-12 w-24 bg-black text-white text-center p-3 items-center font-medium rounded-none"
+          className="h-12 w-24 bg-black ml-4 text-white text-center p-3 items-center font-medium rounded-none"
           htmlFor="login-modal"
         >
           {/* <Link

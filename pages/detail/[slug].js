@@ -57,7 +57,7 @@ export default function ProductDetail() {
               width={280}
               height={360}
             />
-            <div className="flex justify-center   ">
+            <div className="flex justify-center items-center">
               <BsStarFill />
               <span>{` ${product.rating.rate} (${product.rating.count})`}</span>
             </div>
