@@ -8,7 +8,9 @@ export default function SalesAdmin() {
   let total = 0;
 
   if (checkout.length >= 1) {
-    return (
+      return (
+        <>
+              <h1 className="font-bold text-center text-2xl mt-12">Sales Recap</h1>
       <table className="table-zebra w-11/12 mx-12 my-6">
         <thead className="border border-solid border-black">
           <tr>
@@ -60,12 +62,13 @@ export default function SalesAdmin() {
             <td className="border-b border-black">${total.toFixed(2)}</td>
           </tr>
         </tbody>
-      </table>
+              </table>
+              </>
     );
   } else {
     return (
-      <div className="flex justify-center items-center">
-        <h1 className="font-bold text-center text-2xl">No Sales</h1>
+      <div className="flex justify-center items-center h-full">
+        <h1 className="font-bold text-center my-52 text-6xl">No Sales</h1>
       </div>
     );
   }
