@@ -33,7 +33,7 @@ export default function TopProducts({ products }) {
       </div>
       <Link
         href={"/products"}
-        className="ml-8 h-12 w-48 bg-black text-white text-center text-lg p-3 px-32 items-center font-base rounded-none"
+        className="ml-8 h-12 w-48 bg-black text-white text-center text-lg p-3 px-20 lg:px-32 items-center font-base rounded-none"
       >
         See More
       </Link>

@@ -13,14 +13,6 @@ export default function ProductDetail() {
   // const [product, setProduct] = useState(null);
 
   const idForModal = useContext(CardContext);
-  useEffect(() => {
-    console.log("idForModal", idForModal);
-  }, [CardContext]);
-
-  // get value CardContext
-  useEffect(() => {
-    console.log("idForModal", idForModal.id);
-  }, [CardContext]);
 
   // get product using find
   const product = products.find((item) => item.id === idForModal);
@@ -72,7 +64,7 @@ export default function ProductDetail() {
             <div className="flex justify-center">
               <Image
                 className="justify-self-center px-10 w-4/5 my-4"
-                src={product?.image}
+                src={product?.image || "/image/placeholder.svg"}
                 alt="random image"
                 // placeholder="blur"
                 // blurDataURL={dataProduct?.image}
