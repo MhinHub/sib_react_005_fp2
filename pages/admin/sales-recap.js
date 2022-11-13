@@ -1,5 +1,5 @@
 import React from 'react'
-import SalesAdmin from "../../components/SalesAdmin";
+import SalesAdmin from "../../components/admin/SalesAdmin";
 import Layout from "../../components/Layout";
 import Nav from "../../components/Nav";
 

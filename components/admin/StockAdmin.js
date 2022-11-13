@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { updateStock } from "../context/products-slice";
+import { updateStock } from "../../context/products-slice";
 import Image from "next/image";
 
 export default function StockAdmin({ stock, setStock }) {
@@ -17,7 +17,7 @@ export default function StockAdmin({ stock, setStock }) {
     dataFilter.push(product);
     dataFilter.sort((a, b) => a.id - b.id || a.name.localeCompare(b.name)); // sort by id or name
     setStock(dataFilter);
-  };;
+  };
 
   const handleUpdateStock = (stock, idx) => {
     dispatch(updateStock({ stock: stock[idx].stock, idx }));

@@ -1,17 +1,11 @@
-// import CartUser from "../components/modal/CartUser";
-import Categories from "../components/Categories";
-import HeroProduct from "../components/HeroProduct";
+import Categories from "../components/home/Categories";
+import HeroProduct from "../components/home/HeroProduct";
 import Nav from "../components/Nav";
-import TopProducts from "../components/TopProducts";
-import WelcomeSection from "../components/WelcomeSection";
+import TopProducts from "../components/home/TopProducts";
+import WelcomeSection from "../components/home/WelcomeSection";
 import Layout from "../components/Layout";
-import { getProducts, users } from "./api";
-
-import Detail from "./detail/[slug]";
-
+import { getProducts } from "./api";
 import React from "react";
-import Link from "next/link";
-import Head from "next/head";
 
 export async function getStaticProps() {
   const { data } = await getProducts();
@@ -26,7 +20,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Index({ products }) {
+export default function Home({ products }) {
   return (
     <Layout title="Home">
       <WelcomeSection />

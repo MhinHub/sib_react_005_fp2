@@ -1,5 +1,5 @@
 import React from "react";
-import StockAdmin from "../../components/StockAdmin";
+import StockAdmin from "../../components/admin/StockAdmin";
 import { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import Nav from "../../components/Nav";

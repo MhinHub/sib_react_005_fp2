@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { initiateProducts } from "../context/products-slice";
-import { getProducts } from "../pages/api/index";
+import { initiateProducts } from "../../context/products-slice";
+import { getProducts } from "../../pages/api/index";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
-import CardSkeleton from "./CardSkeleton";
+import CardSkeleton from "../CardSkeleton";
 
-const CardItem = dynamic(() => import("./CardItem"), { suspense: true });
+const CardItem = dynamic(() => import("../CardItem"), { suspense: true });
 
 // metode fetching data getStaticProps() hanya bisa dilakukan di pages, tidak secara langsung di components
 
