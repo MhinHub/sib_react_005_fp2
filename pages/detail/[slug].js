@@ -17,7 +17,7 @@ export default function ProductDetail() {
   const product = products.find((item) => item.id === parseInt(slug));
 
   // Get the value of an Input field
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
 
   function handleChange(data, value) {
     dispatch(
@@ -31,15 +31,19 @@ export default function ProductDetail() {
 
   const handlePlusCart = (data) => {
     setValue(value + 1);
-    handleChange(data, value + 1);
+    handleChange(data, value);
   };
 
   const handleMinusCart = (data) => {
     if (value > 0) {
       setValue(value - 1);
-      handleChange(data, value - 1);
+      handleChange(data, value);
     }
   };
+
+  function handleAddCart(data) {
+    dispatch(addCart({ cartData: data, qty: value, isCart: false }));
+  }
 
   return (
     <Layout title={"Detail Product"}>
@@ -100,7 +104,10 @@ export default function ProductDetail() {
                 Total ${(product.price * value).toFixed(2)}
               </p>
             </div>
-            <button className="flex w-full h-12 bg-black gap-x-4 text-center justify-center items-center text-white font-semibold">
+            <button
+              onClick={() => handleAddCart(product)}
+              className="flex w-full h-12 bg-black gap-x-4 text-center justify-center items-center text-white font-semibold"
+            >
               <BsCartFill />
               Add to Cart
             </button>
