@@ -17,7 +17,7 @@ export default function ProductDetail() {
   const product = products.find((item) => item.id === parseInt(slug));
 
   // Get the value of an Input field
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   function handleChange(data, value) {
     dispatch(
