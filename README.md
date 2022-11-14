@@ -1,13 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FMhinHub%2Fsib_react_005_fp2&count_bg=%23050505&title_bg=%23555555&icon=&icon_color=%23B4B4B4&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

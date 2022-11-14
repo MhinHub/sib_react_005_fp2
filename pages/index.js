@@ -22,7 +22,7 @@ export async function getStaticProps() {
 
 export default function Home({ products }) {
   return (
-    <Layout title="Home">
+    <Layout title="Welcome">
       <WelcomeSection />
       <Nav />
       <Categories />

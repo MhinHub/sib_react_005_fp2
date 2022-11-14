@@ -1,6 +1,16 @@
 import Marquee from "react-fast-marquee";
+import { useLottie } from "lottie-react";
+import DownArrow from "../../public/lottie/down-black-arrow.json";
 
 export default function Welcome() {
+  const options = {
+    animationData: DownArrow,
+    loop: true,
+    autoplay: true,
+  };
+
+  const { View } = useLottie(options);
+
   return (
     <section className="flex flex-col h-screen w-full bg-image-linear-gradient-v">
       {/* create marquee rectangle in bottom screen */}
@@ -29,8 +39,8 @@ export default function Welcome() {
           Welcome to Hashop
         </h1>
         <h2 className="text-2xl font-light">More you buy more we sell</h2>
-        {/*Todo:  animation bottom*/}
       </div>
+      <div className="flex justify-center">{View}</div>
     </section>
   );
 }
