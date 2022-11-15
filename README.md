@@ -1,5 +1,15 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FMhinHub%2Fsib_react_005_fp2&count_bg=%23050505&title_bg=%23555555&icon=&icon_color=%23B4B4B4&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 
+<div align="center">
+<img src="public/icon-512x512.png" alt="logo" width="200" height="auto" />
+  <h1>Hashop</h1>
+  <p><b>Final project 2 - Kelompok 1</b></p>
+  <p>Aplikasi yang dibuat pada Final project ini adalah website E-Commerce dengan API dari Fakestoreapi dengan menerapkan sistem database  Local Storage yang juga bisa di install pada perangkat laptop maupun mobile sehingga bisa bekerja walaupun offline.
+</p>
+</div>
+<br/>
+
+----
 
 ## Panduan Aplikasi dari Sisi Pengguna (User Guide) 📒
 
