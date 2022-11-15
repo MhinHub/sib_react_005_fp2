@@ -18,7 +18,7 @@ export default function about() {
             <AboutDev
               name={"Muhammad Irfan Zidni"}
               code={"002"}
-              img={"/../public/avatar/Irfan.jpg"}
+              img={"/avatar/Irfan.jpg"}
               univ={"Universitas Dian Nuswantoro"}
               linkGh={"https://github.com/irfanzidniofficial"}
               linkIg={"https://www.instagram.com/irfanzidni11/"}
@@ -27,7 +27,7 @@ export default function about() {
             <AboutDev
               name={"Muhaemin Iskandar"}
               code={"001"}
-              img={"/../public/avatar/Muhaemin.jpg"}
+              img={"/avatar/Muhaemin.jpg"}
               univ={"Universitas Hasanuddin"}
               linkGh={"https://github.com/MhinHub/"}
               linkIg={"https://www.instagram.com/muhis.me/"}
@@ -36,7 +36,7 @@ export default function about() {
             <AboutDev
               name={"Vika Alpiana"}
               code={"003"}
-              img={"/../public/avatar/Vika.jpg"}
+              img={"/avatar/Vika.jpg"}
               univ={"Universitas Dian Nuswantoro"}
               linkGh={"https://github.com/vikaalpianaaa"}
               linkIg={"http://instagram.com/vikaalpiana"}

@@ -18,8 +18,8 @@ export default function AboutDev({
           <div className="w-24 h-24 p-px mask mask-squircle bg-base-content bg-opacity-10">
             <Image
               src={img}
-              width="200"
-              height="200"
+              width={200}
+              height={200}
               alt="Avatar"
               className="mask mask-squircle w-11 h-11"
             />
