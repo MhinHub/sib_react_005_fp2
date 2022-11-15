@@ -67,7 +67,9 @@
 ----
 
 ## 🍄 Gambaran Logic & Data Store
-[![Gambaran Logic & Data Store](FC&UML.png)](https://www.figma.com/file/njA9sGky0KzgxkLWR3aCx8/Design-FP2?node-id=2%3A2033&t=OQynp4GFsrN1KwoX-1)
+[Flowcart dan UML](FC&UML.png)
+atau
+[Klik disini](https://www.figma.com/file/njA9sGky0KzgxkLWR3aCx8/Design-FP2?node-id=2%3A2033&t=OQynp4GFsrN1KwoX-1) di Figma.
 
 ----
 <br/>
