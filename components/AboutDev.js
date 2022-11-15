@@ -21,7 +21,7 @@ export default function AboutDev({
               width="200"
               height="200"
               alt="Avatar"
-              className="mask mask-squircle w-11"
+              className="mask mask-squircle w-11 h-11"
             />
           </div>
         </div>
