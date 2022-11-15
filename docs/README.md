@@ -87,13 +87,12 @@ yarn create next-app
 # atau
 pnpm create next-app
 ```
+- Masukkan nama project dan pilih template yang akan digunakan ketika diminta.
 - Install dependensi yang dibutuhkan
 
 ```bash
 npm install <nama-package>
 ```
-
-- Masukkan nama project dan pilih template yang akan digunakan ketika diminta.
 - Masuk ke direktori project dan jalankan server development.
 ```bash
 cd <nama project>
