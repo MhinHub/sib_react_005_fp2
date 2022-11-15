@@ -52,7 +52,7 @@ Halaman ini muncul ketika card produk diklik. Halaman ini berisi detail produk, 
 ![sc detail-product](./README-ASSET/page/detail-product.png)
 
 ### 4. Halaman/Modal Keranjang Belanja (Cart - User) 🛒
-    Halaman/Modal ini muncul ketika tombol keranjang belanja di navbar diklik pada role user. Halaman ini berisi daftar produk yang telah ditambahkan ke keranjang belanja. Pengguna dapat mengubah jumlah produk yang akan dibeli, menghapus produk dari keranjang belanja, dan melanjutkan ke halaman checkout.
+Halaman/Modal ini muncul ketika tombol keranjang belanja di navbar diklik pada role user. Halaman ini berisi daftar produk yang telah ditambahkan ke keranjang belanja. Pengguna dapat mengubah jumlah produk yang akan dibeli, menghapus produk dari keranjang belanja, dan melanjutkan ke halaman checkout.
 
 ![sc cart](./README-ASSET/modal/cart.png)
 
