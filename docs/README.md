@@ -6,7 +6,7 @@
 <br/>
 
 ## Tentang Aplikasi 📖
-1. Konsep design yang digunakan: Blutarism dengan dasar warna putih dan biru beserta ungu gradient sebagai tambahan.
+1. Konsep design yang digunakan: Blutarism dengan dasar warna putih dan hitam beserta ungu gradient sebagai tambahan.
 2. Font : Space Grotesk (Font Sans), Roboto Mono (Font Mono).
 3. Menggunakan strategi data fetching ISR (Incremental static regeneration) untuk produk dan hanya dilakukan sekali, disimpan ke store dan digunakan kesemua halaman atau komponen. Jadi tidak perlu melakukan fetch data lagi ke API misalnya untuk tampilan detail produk dan kategori.
 3. Halaman: Home, Products, detail product, Update Stock dan Sales Recap serta About Dev.
@@ -148,6 +148,7 @@ git push origin <nama-branch>
 
 ## LightHouse Score 🗼
 * Untuk sekarang ini:
+
 ![Lighthouse Score](Lh-score.png)
 
 ---
