@@ -146,6 +146,13 @@ git push origin <nama-branch>
 ----
 <br/>
 
+## LightHouse Score 🗼
+* Untuk sekarang ini:
+![Lighthouse Score](Lh-score.png)
+
+---
+<br/>
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
