@@ -154,6 +154,13 @@ git push origin <nama-branch>
 ---
 <br/>
 
+## Already Indexed by Google Search 🥳
+
+![sc hashop google](sc-hashop-gl.png)
+
+---
+<br/>
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
